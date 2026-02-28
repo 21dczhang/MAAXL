@@ -1,0 +1,289 @@
+{
+    "ClaimStamina_Start": {
+        "next": [
+            "[JumpBack]ClaimStamina_LinkError",
+            "[JumpBack]ClaimStamina_LinkError_ServerError",
+            "[JumpBack]ClaimStamina_TouchStart_Connecting",
+            "ClaimStamina_HomePage",
+            "[JumpBack]ClaimStamina_callBackup_button"
+        ],
+        "pre_wait_freezes": 500,
+        "doc": "开始领取好友体力",
+        "focus": "[状态]启动好友体力领取流程"
+    },
+    "ClaimStamina_Logo": {
+        "recognition": "OCR",
+        "next": [
+            "[JumpBack]ClaimStamina_LinkError",
+            "[JumpBack]ClaimStamina_LinkError_ServerError",
+            "[JumpBack]ClaimStamina_TouchStart_Connecting",
+            "ClaimStamina_LoadingPage",
+            "ClaimStamina_Logo",
+            "ClaimStamina_TouchStart"
+        ],
+        "roi": [
+            168,
+            566,
+            373,
+            86
+        ],
+        "expected": [
+            "(?i)labs"
+        ],
+        "focus": "[状态]检测到 EROLABS 启动标识",
+        "post_delay": 6000,
+        "timeout": 20000
+    },
+    "ClaimStamina_LoadingPage": {
+        "recognition": "OCR",
+        "next": [
+            "[JumpBack]ClaimStamina_LinkError",
+            "[JumpBack]ClaimStamina_LinkError_ServerError",
+            "[JumpBack]ClaimStamina_TouchStart_Connecting",
+            "[JumpBack]ClaimStamina_Skip_Notice",
+            "ClaimStamina_TouchStart",
+            "ClaimStamina_LoadingPage"
+        ],
+        "roi": [
+            156,
+            1074,
+            200,
+            38
+        ],
+        "expected": [
+            "(?i)ka"
+        ],
+        "focus": "[状态]处于加载页面，等待进入标题界面",
+        "pre_wait_freezes": 3000,
+        "timeout": 50000
+    },
+    "ClaimStamina_Skip_Notice": {
+        "recognition": "OCR",
+        "expected": "公",
+        "roi": [
+            276,
+            167,
+            171,
+            48
+        ],
+        "action": "Click",
+        "target": [
+            344,
+            1141,
+            29,
+            26
+        ],
+        "focus": "[动作]检测到公告，点击以跳过"
+    },
+    "ClaimStamina_TouchStart": {
+        "recognition": "OCR",
+        "next": [
+            "[JumpBack]ClaimStamina_LinkError",
+            "[JumpBack]ClaimStamina_LinkError_ServerError",
+            "ClaimStamina_HomePage",
+            "[JumpBack]ClaimStamina_TouchStart_Connecting",
+            "ClaimStamina_TouchStart",
+            "[JumpBack]ClaimStamina_callBackup_button"
+        ],
+        "roi": [
+            201,
+            1128,
+            314,
+            42
+        ],
+        "expected": "(?i)St",
+        "action": "Click",
+        "timeout": 30000,
+        "focus": "[动作]点击 TAP TO START 进入游戏主页"
+    },
+    "ClaimStamina_TouchStart_Connecting": {
+        "recognition": "OCR",
+        "roi": [
+            210,
+            1205,
+            300,
+            34
+        ],
+        "expected": "(?i)N",
+        "focus": "[状态]标题界面连接中，请稍候"
+    },
+    "ClaimStamina_callBackup_button": {
+        "recognition": "DirectHit",
+        "action": "ClickKey",
+        "key": 4,
+        "focus": "[动作]发送返回键指令：跳过签到、礼包或各类弹窗"
+    },
+    "ClaimStamina_HomePage": {
+        "recognition": "OCR",
+        "next": [
+            "[JumpBack]ClaimStamina_LinkError",
+            "[JumpBack]ClaimStamina_LinkError_ServerError",
+            "[JumpBack]ClaimStamina_HomePage_Conneting",
+            "ClaimStamina_HomePage2",
+            "[JumpBack]ClaimStamina_Logo",
+            "[JumpBack]ClaimStamina_LoadingPage",
+            "[JumpBack]ClaimStamina_callBackup_button"
+        ],
+        "roi": [
+            445,
+            867,
+            250,
+            249
+        ],
+        "expected": "出征",
+        "post_delay": 1000,
+        "focus": "[状态]检测到出征按钮，正在进行环境二次确认"
+    },
+    "ClaimStamina_HomePage2": {
+        "recognition": "OCR",
+        "next": [
+            "[JumpBack]ClaimStamina_LinkError",
+            "[JumpBack]ClaimStamina_LinkError_ServerError",
+            "[JumpBack]ClaimStamina_TouchStart_Connecting",
+            "ClaimStamina_GotoFriend1"
+        ],
+        "roi": [
+            445,
+            867,
+            250,
+            249
+        ],
+        "expected": "出征",
+        "focus": "[状态]已确认回到主界面"
+    },
+    "ClaimStamina_GotoFriend1": {
+        "action": "Click",
+        "next": [
+            "[JumpBack]ClaimStamina_LinkError",
+            "[JumpBack]ClaimStamina_LinkError_ServerError",
+            "[JumpBack]ClaimStamina_TouchStart_Connecting",
+            "ClaimStamina_GotoFriend2"
+        ],
+        "target": [
+            29,
+            67,
+            118,
+            65
+        ],
+        "post_delay": 1500,
+        "focus": "[动作]点击个人等级区域，进入设置/个人界面"
+    },
+    "ClaimStamina_GotoFriend2": {
+        "action": "Click",
+        "next": [
+            "[JumpBack]ClaimStamina_LinkError",
+            "[JumpBack]ClaimStamina_LinkError_ServerError",
+            "[JumpBack]ClaimStamina_TouchStart_Connecting",
+            "ClaimStamina_Claim"
+        ],
+        "target": [
+            299,
+            203,
+            114,
+            31
+        ],
+        "focus": "[动作]点击好友清单页签"
+    },
+    "ClaimStamina_Claim": {
+        "action": "Click",
+        "next": [
+            "[JumpBack]ClaimStamina_LinkError",
+            "[JumpBack]ClaimStamina_LinkError_ServerError",
+            "[JumpBack]ClaimStamina_TouchStart_Connecting",
+            "ClaimStamina_Comeback_home"
+        ],
+        "roi": [
+            425,
+            1077,
+            116,
+            36
+        ],
+        "post_wait_freezes": 1500,
+        "focus": "[动作]点击一键领取好友体力"
+    },
+    "ClaimStamina_Comeback_home": {
+        "action": "ClickKey",
+        "next": [
+            "[JumpBack]ClaimStamina_LinkError",
+            "[JumpBack]ClaimStamina_LinkError_ServerError",
+            "[JumpBack]ClaimStamina_TouchStart_Connecting",
+            "ClaimStamina_HomePage_Without_Next",
+            "ClaimStamina_Comeback_home"
+        ],
+        "key": [
+            4
+        ],
+        "focus": "[动作]领取完毕，发送返回键指令以回到主界面"
+    },
+    "ClaimStamina_HomePage_Without_Next": {
+        "recognition": "OCR",
+        "roi": [
+            306,
+            1174,
+            99,
+            63
+        ],
+        "expected": "协会",
+        "post_delay": 1000,
+        "focus": "[状态]检测到协会按钮：已回到主界面，结束任务"
+    },
+    "ClaimStamina_HomePage_Conneting": {
+        "recognition": "OCR",
+        "roi": [
+            210,
+            1205,
+            300,
+            34
+        ],
+        "expected": "(?i)N",
+        "threshold": 0.5,
+        "focus": "[状态]主界面网络波动，等待连接"
+    },
+    "ClaimStamina_LinkError": {
+        "recognition": "OCR",
+        "next": [
+            "[JumpBack]ClaimStamina_TouchStart_Connecting",
+            "ClaimStamina_LinkError2"
+        ],
+        "roi": [
+            124,
+            594,
+            343,
+            65
+        ],
+        "expected": "不稳定",
+        "focus": "[异常]网络连线不稳定"
+    },
+    "ClaimStamina_LinkError_ServerError": {
+        "recognition": "OCR",
+        "next": [
+            "ClaimStamina_LinkError2"
+        ],
+        "roi": [
+            121,
+            602,
+            323,
+            43
+        ],
+        "expected": "联机",
+        "focus": "[异常]服务器无回应，联机错误"
+    },
+    "ClaimStamina_LinkError2": {
+        "recognition": "OCR",
+        "next": [
+            "ClaimStamina_Start"
+        ],
+        "roi": [
+            264,
+            698,
+            191,
+            47
+        ],
+        "expected": [
+            "重新连线",
+            "确定"
+        ],
+        "action": "Click",
+        "focus": "[动作]点击确定/重新连线以尝试修复连接"
+    }
+}

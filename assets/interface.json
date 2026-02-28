@@ -1,0 +1,896 @@
+{
+    // 本文件主要定义了通用 UI 的行为和显示内容
+    // 可参考文档和示例添加更多您需要的功能
+    // 文档：https://maafw.xyz/docs/3.3-ProjectInterfaceV2
+    // 示例：https://github.com/MaaXYZ/MaaFramework/blob/main/sample/interface.json
+    "interface_version": 2,
+    "name": "MaaTKFM2",
+    "description": "for TKFM",
+    "contact": "QQ群: Nothing",
+    "license": "MIT",
+    "welcome": "首次使用！欢迎使用 MAATKFM2!",
+    // 填写项目地址和版本号可实现自动更新功能
+    "github": "https://github.com/MaaXYZ/MaaPracticeBoilerplate",
+    "version": "1.0.0",
+    "controller": [
+        {
+            "name": "安卓端",
+            "type": "Adb",
+            "display_short_side": 720 // 默认缩放分辨率的短边长度
+        },
+        {
+            "name": "桌面端",
+            "type": "Win32",
+            "win32": {
+                "class_regex": ".*",
+                "window_regex": "Visual Studio",
+                // 截图及控制方式，请根据项目实际情况修改
+                // 文档: https://maafw.xyz/docs/2.4-ControlMethods
+                "screencap": "PrintWindow", // 截图方式
+                "mouse": "PostMessageWithCursorPos", // 鼠标控制方式
+                "keyboard": "PostMessageWithCursorPos" // 键盘控制方式
+            }
+        }
+    ],
+    "resource": [
+        {
+            "name": "E服",
+            "path": [
+                "./resource"
+            ]
+        },
+        {
+            "name": "工 服",
+            "path": [
+                "./resource",
+                "./resource_bilibili"
+            ]
+        }
+    ],
+    // 可选的 agent 示例
+    // "agent": {
+    //     "child_exec": "python",
+    //     "child_args": [
+    //         "./agent/main.py"
+    //     ]
+    // },
+    "task": [
+        {
+            "name": "启动游戏",
+            "entry": "StartGame_Start",
+            "default_check": true,
+            "description": "启动游戏ing"
+        },
+        {
+            "name": "启动游戏2",
+            "entry": "StartGame_Start",
+            "default_check": false,
+            "description": "启动游戏ing,防止第一个启动失败"
+        },
+        {
+            "name": "剪影模式",
+            "entry": "JianYing_Setting_Start",
+            "default_check": false,
+            "description": "剪影模式防社死"
+        },
+        {
+            "name": "领取好友体力",
+            "entry": "ClaimStamina_Start",
+            "default_check": true,
+            "description": "自动领取好友体力,需要自己先把好友加满",
+        },
+        {
+            "name": "自动派遣",
+            "entry": "Dispatch_Start",
+            "default_check": true,
+            "description": "自动派遣，只需要选房间，默认自动派遣最高等级",
+            "option": [
+                "派遣房间1选择",
+                "派遣房间2选择",
+                "派遣房间3选择",
+            ],
+        },
+        {
+            "name": "自动炼金 & 提交订单",
+            "entry": "Alchemy_Start",
+            "default_check": true,
+            "description": "自动炼金，默认2紫1蓝，后续可能增加高级材料炼金支持,(都没做，默认炼金数量加满)",
+            "option": [
+                "炼金槽位分配",
+                "炼金订单选择"
+            ],
+        },
+        {
+            "name": "自动刷高级银币、经验药水、影像副本",
+            "entry": "AdvancedDungeon_Start",
+            "default_check": true,
+            "description": "自动刷高级副本，需要准备好一只队伍，名称叫 扫荡队，或者选择扫荡方式刷",
+            "option": [
+                "刷副本方式",
+                "是否刷银币副本",
+                "是否刷药水副本",
+                "是否刷影像副本",
+            ],
+        },
+        {
+            "name": "协会奖励自动领取(需要提前加入协会",
+            "entry": "Association_Start",
+            "default_check": true,
+            "description": "协会奖励自动领取(需要提前加入协会",
+        },
+        {
+            "name": "商店物品自动购买",
+            "entry": "Shop_Start",
+            "default_check": true,
+            "description": "日常商店、协会商店、神秘商店自动购买",
+            "option": [
+                "是否购买交易所",
+                "是否购买协会商店",
+                "是否购买神秘商店",
+            ],
+        },
+        {
+            "name": "日常任务 - 角色升级3次",
+            "entry": "LevelUP_Start",
+            "default_check": true,
+            "description": "日常任务 - 角色升级3次",
+            "option": [
+                "升级喜好策略",
+            ],
+        },
+        {
+            "name": "日常任务 - 角色调教3次",
+            "entry": "TiaoJiao_Start",
+            "default_check": true,
+            "description": "日常任务 - 角色调教3次",
+            "option": [
+                "调教喜好策略 - 属性选择",
+                "调教喜好策略 - 稀有度选择"
+            ],
+        },
+        {
+            "name": "协会共斗",
+            "entry": "XieHuiGongDou_Start",
+            "default_check": true,
+            "description": "协会共斗，需要设置一个队伍，叫 主力队，并且设置好主力队的出手顺序",
+        },
+        {
+            "name": "协会共斗奖励领取",
+            "entry": "XieHuiGongDou_Award_Start",
+            "default_check": true,
+            "description": "日常任务 - 领取奖励（日常、每周、每月、个人、活动、协会",
+        },
+        {
+            "name": "限时活动 - 首次通关",
+            "entry": "LimitedTime_Event_First_Start",
+            "default_check": true,
+            "description": "限时活动 - 首次通关，需要设置一个队伍，叫 活动队,并且需要auto 能打过",
+            "option": [
+                "首次通关 - 体力消耗选择 ",
+                "首次通关 - 限时活动类型"
+            ]
+        },
+        {
+            "name": "战斗",
+            "entry": "LimitedTime_Event_Start",
+            "default_check": true,
+            "description": "战斗 - 选择消耗体力的方式 选择限时活动时，需要设置一个队伍，叫 活动队",
+            "option": [
+                "战斗选择 - 目前只支持限时活动",
+                "体力消耗选择 "
+            ]
+        },
+        {
+            "name": "活动 - 领取分数奖励",
+            "entry": "LimitedTime_Award_Start",
+            "default_check": true,
+            "description": "自动领取分数奖励，目前只支持剧情类，材料兑换类需手动兑换",
+        },
+        {
+            "name": "领取邮件",
+            "entry": "Mail_Start",
+            "default_check": true,
+            "description": "日常任务 - 领取奖励（日常、每周、每月、个人、活动、协会",
+        },
+        {
+            "name": "日常任务 - 领取日常任务奖励",
+            "entry": "DailyTask_Start",
+            "default_check": true,
+            "description": "日常任务 - 领取奖励（日常、每周、每月、个人、活动、协会",
+        },
+        {
+            "name": "虚宝码兑换",
+            "entry": "XuBaoMa_Start",
+            "default_check": true,
+            "description": "虚宝码兑换，需持续更新",
+        },
+        {
+            "name": "全境征才",
+            "entry": "QuanJingZhengCai_Start",
+            "default_check": true,
+            "description": "全境征才 - 只会选领袖、菁英，不会选其他选项。先偷懒",
+        },
+        {
+            "name": "测试任务",
+            "entry": "LimitedTime_Senond_Event_GotoLimitedTime_Senond_Event1_Check_AP"
+        }
+    ],
+    "option": {
+        "派遣房间1选择": {
+            "description": "房间奖励:<br>魔王寝室掉落铁类素材与火属性调教道具<br>地牢掉落水类素材与水属性调教道具<br>训练所掉落爪类素材与风属性调教道具<br>宝藏库掉落黏液类素材与光属性调教道具<br>封印密室掉落粉类素材与暗属性调教道具",
+            "default_case": "魔王寝室",
+            "cases": [
+                {
+                    "name": "魔王寝室",
+                    "pipeline_override": {
+                        "Dispatch_Dispatch_Home1": {
+                            "next": [
+                                "Dispatch_Dispatch_MoWangQinShi"
+                            ]
+                        },
+                    }
+                },
+                {
+                    "name": "地牢",
+                    "pipeline_override": {
+                        "Dispatch_Dispatch_Home1": {
+                            "next": [
+                                "Dispatch_Dispatch_DiLao"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "训练所",
+                    "pipeline_override": {
+                        "Dispatch_Dispatch_Home1": {
+                            "next": [
+                                "Dispatch_Dispatch_XunLianSuo"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "藏宝库",
+                    "pipeline_override": {
+                        "Dispatch_Dispatch_Home1": {
+                            "next": [
+                                "Dispatch_Dispatch_BaoZangKu"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "封印密室",
+                    "pipeline_override": {
+                        "Dispatch_Dispatch_Home1": {
+                            "next": [
+                                "Dispatch_Dispatch_FengYinMiShi"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "派遣房间2选择": {
+            "description": "房间奖励:<br>魔王寝室掉落铁类素材与火属性调教道具<br>地牢掉落水类素材与水属性调教道具<br>训练所掉落爪类素材与风属性调教道具<br>宝藏库掉落黏液类素材与光属性调教道具<br>封印密室掉落粉类素材与暗属性调教道具",
+            "default_case": "训练所",
+            "cases": [
+                {
+                    "name": "魔王寝室",
+                    "pipeline_override": {
+                        "Dispatch_Dispatch_Home2": {
+                            "next": [
+                                "Dispatch_Dispatch_MoWangQinShi"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "地牢",
+                    "pipeline_override": {
+                        "Dispatch_Dispatch_Home2": {
+                            "next": [
+                                "Dispatch_Dispatch_DiLao"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "训练所",
+                    "pipeline_override": {
+                        "Dispatch_Dispatch_Home2": {
+                            "next": [
+                                "Dispatch_Dispatch_XunLianSuo"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "藏宝库",
+                    "pipeline_override": {
+                        "Dispatch_Dispatch_Home2": {
+                            "next": [
+                                "Dispatch_Dispatch_BaoZangKu"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "封印密室",
+                    "pipeline_override": {
+                        "Dispatch_Dispatch_Home2": {
+                            "next": [
+                                "Dispatch_Dispatch_FengYinMiShi"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "派遣房间3选择": {
+            "description": "房间奖励:<br>魔王寝室掉落铁类素材与火属性调教道具<br>地牢掉落水类素材与水属性调教道具<br>训练所掉落爪类素材与风属性调教道具<br>宝藏库掉落黏液类素材与光属性调教道具<br>封印密室掉落粉类素材与暗属性调教道具",
+            "default_case": "封印密室",
+            "cases": [
+                {
+                    "name": "魔王寝室",
+                    "pipeline_override": {
+                        "Dispatch_Dispatch_Home3": {
+                            "next": [
+                                "Dispatch_Dispatch_MoWangQinShi"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "地牢",
+                    "pipeline_override": {
+                        "Dispatch_Dispatch_Home3": {
+                            "next": [
+                                "Dispatch_Dispatch_DiLao"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "训练所",
+                    "pipeline_override": {
+                        "Dispatch_Dispatch_Home3": {
+                            "next": [
+                                "Dispatch_Dispatch_XunLianSuo"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "藏宝库",
+                    "pipeline_override": {
+                        "Dispatch_Dispatch_Home3": {
+                            "next": [
+                                "Dispatch_Dispatch_BaoZangKu"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "封印密室",
+                    "pipeline_override": {
+                        "Dispatch_Dispatch_Home3": {
+                            "next": [
+                                "Dispatch_Dispatch_FengYinMiShi"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "炼金槽位分配": {
+            "description": "炼金选择类型选择，默认2紫1蓝",
+            "cases": [
+                {
+                    "name": "2紫1蓝"
+                },
+                {
+                    "name": "3紫0蓝"
+                },
+                {
+                    "name": "1紫2蓝"
+                },
+                {
+                    "name": "0紫3蓝"
+                },
+            ],
+        },
+        "炼金订单选择": {
+            "description": "炼金订单类型选择，默认只做全紫(还没做，目前是全部做",
+            "cases": [
+                {
+                    "name": "全部订单都做"
+                },
+                {
+                    "name": "只接紫水晶订单"
+                },
+                {
+                    "name": "只接蓝水晶订单"
+                },
+            ]
+        },
+        "刷副本方式": {
+            "description": "刷高级副本的方式选择，扫荡/队伍自动刷， 扫荡需要准备好扫荡券",
+            "default_case": "扫荡队自动刷",
+            "cases": [
+                {
+                    "name": "扫荡队自动刷",
+                    "pipeline_override": {
+                        "AdvancedDungeon_YinBi_SaoDang": {
+                            "enabled": false
+                        },
+                        "AdvancedDungeon_YingXiang_Select_Role_Start": {
+                            "enabled": true
+                        },
+                        "AdvancedDungeon_JingYanYaoShui_SaoDang": {
+                            "enabled": false
+                        },
+                        "AdvancedDungeon_JingYanYaoShui_Select_Role_Start": {
+                            "enabled": true
+                        },
+                        "AdvancedDungeon_YingXiang_SaoDang": {
+                            "enabled": false
+                        },
+                        "AdvancedDungeon_YingXiang_Select_Role_Start": {
+                            "enabled": true
+                        },
+                    }
+                },
+                {
+                    "name": "扫荡券扫荡",
+                    "AdvancedDungeon_YinBi_SaoDang": {
+                        "enabled": true
+                    },
+                    "AdvancedDungeon_YingXiang_Select_Role_Start": {
+                        "enabled": false
+                    },
+                    "AdvancedDungeon_JingYanYaoShui_SaoDang": {
+                        "enabled": true
+                    },
+                    "AdvancedDungeon_JingYanYaoShui_Select_Role_Start": {
+                        "enabled": false
+                    },
+                    "AdvancedDungeon_YingXiang_SaoDang": {
+                        "enabled": true
+                    },
+                    "AdvancedDungeon_YingXiang_Select_Role_Start": {
+                        "enabled": false
+                    }
+                },
+            ]
+        },
+        "是否刷银币副本": {
+            "description": "刷高级副本的方式选择，扫荡/队伍自动刷， 扫荡需要准备好扫荡券",
+            "type": "switch",
+            "default_case": "Yes",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {}
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {}
+                },
+            ]
+        },
+        "是否刷药水副本": {
+            "description": "刷高级副本的方式选择，扫荡/队伍自动刷， 扫荡需要准备好扫荡券",
+            "type": "switch",
+            "default_case": "Yes",
+            "cases": [
+                {
+                    "name": "Yes"
+                },
+                {
+                    "name": "No"
+                },
+            ]
+        },
+        "是否刷影像副本": {
+            "description": "刷高级副本的方式选择，扫荡/队伍自动刷， 扫荡需要准备好扫荡券",
+            "type": "switch",
+            "default_case": "Yes",
+            "cases": [
+                {
+                    "name": "Yes"
+                },
+                {
+                    "name": "No"
+                },
+            ]
+        },
+        "是否购买交易所": {
+            "description": "是否购买交易所物品(招募命令和体力药水必买，其他看选项)",
+            "type": "select",
+            "default_case": "Yes",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "option": [
+                        "交易所打折升级材料",
+                        "交易所打折记忆精粹"
+                    ]
+                },
+                {
+                    "name": "No"
+                },
+            ]
+        },
+        "是否购买协会商店": {
+            "description": "是否购买协会商店物品(折扣银币和魔晶石、招募券必买，其他看选项)",
+            "type": "select",
+            "default_case": "Yes",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "option": [
+                        "协会商城购买打折属性石头"
+                    ]
+                },
+                {
+                    "name": "No"
+                },
+            ]
+        },
+        "是否购买神秘商店": {
+            "description": "是否购买神秘商店物品，占位，神秘商店只有5抽值得买",
+            "type": "select",
+            "default_case": "No",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "option": []
+                },
+                {
+                    "name": "No"
+                },
+            ]
+        },
+        "交易所打折升级材料": {
+            "description": "是否购买打折升级材料？占位，没有实现",
+            "type": "select",
+            "default_case": "No",
+            "cases": [
+                {
+                    "name": "Yes",
+                },
+                {
+                    "name": "No"
+                },
+            ]
+        },
+        "交易所打折记忆精粹": {
+            "description": "是否购买打折记忆精粹？占位，没有实现",
+            "type": "select",
+            "default_case": "不购买",
+            "cases": [
+                {
+                    "name": "不购买"
+                },
+                {
+                    "name": "购买全部打折精粹",
+                },
+                {
+                    "name": "购买全部SSR精粹"
+                },
+                {
+                    "name": "购买全部SR精粹"
+                },
+                {
+                    "name": "购买全部R精粹"
+                },
+                {
+                    "name": "购买全部N精粹"
+                },
+            ]
+        },
+        "协会商城购买打折属性石头": {
+            "description": "是否购买打折属性石头？占位，没有实现",
+            "type": "select",
+            "default_case": "不购买",
+            "cases": [
+                {
+                    "name": "不购买"
+                },
+                {
+                    "name": "购买全部风属性石头",
+                },
+                {
+                    "name": "购买全部火属性石头"
+                },
+                {
+                    "name": "购买全部水属性石头"
+                },
+                {
+                    "name": "购买全部光属性石头"
+                },
+                {
+                    "name": "购买全部暗属性石头"
+                },
+            ]
+        },
+        "升级喜好策略": {
+            "description": "升级喜好策略",
+            "type": "select",
+            "default_case": "优先升级N卡",
+            "cases": [
+                {
+                    "name": "优先升级N卡"
+                },
+                {
+                    "name": "优先升级R卡",
+                },
+                {
+                    "name": "优先升级SR卡"
+                },
+                {
+                    "name": "优先升级SSR卡"
+                },
+            ]
+        },
+        "调教喜好策略 - 稀有度选择": {
+            "description": "调教喜好策略，优先选择什么角色",
+            "type": "select",
+            "default_case": "优先选择SSR卡",
+            "cases": [
+                {
+                    "name": "优先选择SSR卡"
+                },
+                {
+                    "name": "优先选择SR卡",
+                },
+                {
+                    "name": "优先选择R卡"
+                },
+                {
+                    "name": "优先选择N卡"
+                },
+            ]
+        },
+        "调教喜好策略 - 属性选择": {
+            "description": "调教喜好策略，优先选择什么属性",
+            "type": "select",
+            "default_case": "优先选择火属性",
+            "cases": [
+                {
+                    "name": "优先选择火属性"
+                },
+                {
+                    "name": "优先选择水属性",
+                },
+                {
+                    "name": "优先选择风属性"
+                },
+                {
+                    "name": "优先选择光属性"
+                },
+                {
+                    "name": "优先选择暗属性"
+                },
+            ]
+        },
+        "战斗选择 - 目前只支持限时活动": {
+            "description": "战斗选择 - 目前只支持限时活动",
+            "type": "select",
+            "default_case": "限时活动",
+            "cases": [
+                {
+                    "description": "需要手动通关一次，默认选最高体力本打，没有手动通关默认勾选了也没有作用",
+                    "name": "限时活动",
+                    "option": [
+                        "限时活动类型"
+                    ]
+                },
+                {
+                    "description": "开发中，无限期ing...",
+                    "name": "摸鱼塔"
+                }
+            ]
+        },
+        "限时活动类型": {
+            "description": "限时活动 类型 选择 ，即剧情类或者材料兑换类。8w 分 换 SSR属于剧情类， 只能兑换材料的属于材料兑换类",
+            "type": "select",
+            "default_case": "剧情类",
+            "cases": [
+                {
+                    "description": "需要手动通关一次，默认选最高体力本打，没有手动通关默认勾选了也没有作用",
+                    "name": "剧情类",
+                    "pipeline_override": {
+                        "LimitedTime_Event_HuanSuCai": {
+                            "enabled": false
+                        },
+                    }
+                },
+                {
+                    "description": "需要手动通关一次，默认选最高体力本打，没有手动通关默认勾选了也没有作用",
+                    "name": "材料兑换类",
+                    "pipeline_override": {
+                        "LimitedTime_Event_8W_SSR_Start": {
+                            "enabled": false
+                        },
+                    }
+                },
+            ]
+        },
+        "体力消耗选择 ": {
+            "description": "体力消耗选择 ",
+            "type": "select",
+            "default_case": "用完当前体力，不使用魔晶石和药水",
+            "cases": [
+                {
+                    "description": "只消耗当前体力，不使用魔晶石和体力药水",
+                    "name": "用完当前体力，不使用魔晶石和药水",
+                    "pipeline_override": {
+                        "LimitedTime_Event_NoEnoutht_AP": {
+                            "next": [
+                                "LimitedTime_Event_NoEnoutht_AP_DoNot_Use_YaoShui_Or_MoJingShi"
+                            ],
+                        },
+                    }
+                },
+                {
+                    "description": "使用全部药水",
+                    "name": "使用全部体力药水",
+                    "pipeline_override": {
+                        "LimitedTime_Event_NoEnoutht_AP": {
+                            "next": [
+                                "LimitedTime_Event_NoEnoutht_AP_Use_All_TiLiYaoShui"
+                            ],
+                        },
+                    }
+                },
+                {
+                    "description": "使用期限低于3天的体力药水",
+                    "name": "使用期限低于3天的体力药水",
+                    "pipeline_override": {
+                        "LimitedTime_Event_NoEnoutht_AP": {
+                            "next": [
+                                "LimitedTime_Event_NoEnoutht_AP_Use_Vaild_Less_3Days_TiLiYaoShui"
+                            ],
+                        },
+                    }
+                },
+                {
+                    "description": "开发中，无限期ing...",
+                    "name": "使用魔晶石购买药水",
+                    "option": [
+                        "魔晶石购买体力次数"
+                    ],
+                    "pipeline_override": {
+                        "LimitedTime_Event_NoEnoutht_AP": {
+                            "next": [
+                                "LimitedTime_Event_NoEnoutht_AP_Use_MoJingshi"
+                            ],
+                        },
+                    }
+                },
+            ]
+        },
+        "魔晶石购买体力次数": {
+            "description": "魔晶石购买体力次数， 建议不要太多次，每天有次数限制，目前代码没有做次数校验",
+            "type": "input",
+            "inputs": [
+                {
+                    "name": "购买次数",
+                    "description": "购买次数",
+                    "default": "0",
+                    "pipeline_type": "int",
+                    "verify": "^\\d+$"
+                }
+            ],
+            "pipeline_override": {
+                "LimitedTime_Event_Buy_AP": {
+                    "max_hit": "{购买次数}"
+                }
+            }
+        },
+        "首次通关 - 限时活动类型": {
+            "description": "限时活动 类型 选择 ，即剧情类或者材料兑换类。8w 分 换 SSR属于剧情类， 只能兑换材料的属于材料兑换类",
+            "type": "select",
+            "default_case": "剧情类",
+            "cases": [
+                {
+                    "description": "选择活动类型",
+                    "name": "剧情类",
+                    "pipeline_override": {
+                        "LimitedTime_Event_First_Select_Level_And_Start": {
+                            "next": [
+                                "LimitedTime_Event_First_8W_SSR"
+                            ]
+                        },
+                    }
+                },
+                {
+                    "description": "选择活动类型",
+                    "name": "材料兑换类",
+                    "pipeline_override": {
+                        "LimitedTime_Event_First_Select_Level_And_Start": {
+                            "next": [
+                                "LimitedTime_Event_First_HuanSuCai"
+                            ]
+                        },
+                    }
+                },
+            ]
+        },
+        "首次通关 - 体力消耗选择 ": {
+            "description": "体力消耗选择 ",
+            "type": "select",
+            "default_case": "用完当前体力，不使用魔晶石和药水",
+            "cases": [
+                {
+                    "description": "只消耗当前体力，不使用魔晶石和体力药水",
+                    "name": "用完当前体力，不使用魔晶石和药水",
+                    "pipeline_override": {
+                        "LimitedTime_Event_First_NoEnoutht_AP": {
+                            "next": [
+                                "LimitedTime_Event_First_NoEnoutht_AP_DoNot_Use_YaoShui_Or_MoJingShi"
+                            ],
+                        },
+                    }
+                },
+                {
+                    "description": "使用全部体力药水",
+                    "name": "使用全部体力药水",
+                    "pipeline_override": {
+                        "LimitedTime_Event_First_NoEnoutht_AP": {
+                            "next": [
+                                "LimitedTime_Event_First_NoEnoutht_AP_Use_All_TiLiYaoShui"
+                            ],
+                        },
+                    }
+                },
+                {
+                    "description": "使用期限低于3天的体力药水",
+                    "name": "使用期限低于3天的体力药水",
+                    "pipeline_override": {
+                        "LimitedTime_Event_First_NoEnoutht_AP": {
+                            "next": [
+                                "LimitedTime_Event_First_NoEnoutht_AP_Use_Vaild_Less_3Days_TiLiYaoShui"
+                            ],
+                        },
+                    }
+                },
+                {
+                    "description": "开发中，无限期ing...",
+                    "name": "使用魔晶石购买药水",
+                    "option": [
+                        "首次通关 - 魔晶石购买体力次数"
+                    ],
+                    "pipeline_override": {
+                        "LimitedTime_Event_First_NoEnoutht_AP": {
+                            "next": [
+                                "LimitedTime_Event_First_NoEnoutht_AP_Use_MoJingshi"
+                            ],
+                        },
+                    }
+                },
+            ]
+        },
+        "首次通关 - 魔晶石购买体力次数": {
+            "description": "魔晶石购买体力次数， 建议不要太多次，每天有次数限制，目前代码没有做次数校验",
+            "type": "input",
+            "inputs": [
+                {
+                    "name": "购买次数",
+                    "description": "购买次数",
+                    "default": "0",
+                    "pipeline_type": "int",
+                    "verify": "^\\d+$"
+                }
+            ],
+            "pipeline_override": {
+                "LimitedTime_Event_Buy_AP": {
+                    "max_hit": "{购买次数}"
+                }
+            }
+        },
+    },
+}
