@@ -61,15 +61,22 @@
         },
         {
             "name": "升级角色10次 - 完成日常任务升级&消耗金币2w",
-            "entry": "LevelUP_Start"
+            "entry": "LevelUP_Start",
+            "description": "升级角色10次，以便完成日常任务"
         },
         {
             "name": "凭证奖励领取",
-            "entry": "PingZheng_Start"
+            "entry": "PingZheng_Start",
+            "description": "领取凭证奖励"
+        },
+        {
+            "name": "探险队-团队馈礼",
+            "entry": "TanXianDui_Start",
+            "description": "领取探险队每日奖励"
         },
         {
             "name": "测试任务",
-            "entry": "LevelUP_LevelUP_Start_ChengYuan_Select_Role_inverst_Swip_Once"
+            "entry": "Daily_Task_Start"
         }
     ],
     "option": {}

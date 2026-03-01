@@ -52,6 +52,7 @@
         "threshold": [
             0.95
         ],
+        "post_delay": 1000,
         "focus": "[动作] 点击回到主界面按钮"
     },
     "Template2_Start_Click_Comeback_Button": {
@@ -63,6 +64,7 @@
         "threshold": [
             0.95
         ],
+        "post_delay": 1000,
         "focus": "[动作] 点击返回按键"
     },
     "Template2_Start_Click_Close_Button": {
@@ -74,6 +76,7 @@
         "threshold": [
             0.95
         ],
+        "post_delay": 1000,
         "focus": "[动作] 点击关闭图标"
     },
     "Template2_Start_Click_FanHuiYingDi_Button": {
@@ -85,6 +88,7 @@
         "threshold": [
             0.95
         ],
+        "post_delay": 1000,
         "focus": "[动作] 点击返回营地按键"
     },
     "Template2_Start_ComeBack_Home": {

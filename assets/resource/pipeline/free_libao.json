@@ -181,6 +181,7 @@
         "threshold": [
             0.95
         ],
+        "post_delay": 1000,
         "focus": "[动作] 点击回到主界面按钮"
     },
     "FreeLiBao_Start_Click_Comeback_Button": {
@@ -192,6 +193,7 @@
         "threshold": [
             0.95
         ],
+        "post_delay": 1000,
         "focus": "[动作] 点击返回按键"
     },
     "FreeLiBao_Start_ComeBack_Home": {
