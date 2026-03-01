@@ -1,10 +1,10 @@
-# MAATKFM2 Batch Download and Extract Script
+# MaaXL Batch Download and Extract Script
 # Configuration Section
 # ============================================
 
-$REPO_API_URL = "https://api.github.com/repos/21dczhang/MAATKFM2/releases/latest"
-$REPO_RELEASES_URL = "https://github.com/21dczhang/MAATKFM2/releases/latest"
-$DEFAULT_VERSION = "v0.1.8"  # Fallback version
+$REPO_API_URL = "https://api.github.com/repos/21dczhang/MAAXL/releases/latest"
+$REPO_RELEASES_URL = "https://github.com/21dczhang/MAAXL/releases/latest"
+$DEFAULT_VERSION = "v0.1.0"  # Fallback version
 
 Write-Host "[*] Checking for latest release on GitHub..." -ForegroundColor Yellow
 
@@ -43,14 +43,14 @@ if (-not $VERSION) {
 # ============================================
 
 $DESKTOP_PATH = "C:\Users\Aurora\Desktop"
-$TEMP_DOWNLOAD = "$env:TEMP\MaaTKFM2-temp.zip"
-$FOLDER_COUNT = 5
+$TEMP_DOWNLOAD = "$env:TEMP\MaaXL-temp.zip"
+$FOLDER_NAME = "MaaXL"
 
 # 使用具体版本号构建下载 URL
-$DOWNLOAD_URL = "https://github.com/21dczhang/MAATKFM2/releases/download/$VERSION/MaaTKFM2-win-x86_64-$VERSION.zip"
+$DOWNLOAD_URL = "https://github.com/21dczhang/MAAXL/releases/download/$VERSION/MaaXL-win-x86_64-$VERSION.zip"
 
 Write-Host "========================================" -ForegroundColor Cyan
-Write-Host "MAATKFM2 Batch Download and Extract Tool" -ForegroundColor Cyan
+Write-Host "MaaXL Download and Extract Tool" -ForegroundColor Cyan
 Write-Host "Target Version: $VERSION" -ForegroundColor Cyan
 Write-Host "========================================" -ForegroundColor Cyan
 Write-Host ""
@@ -62,7 +62,7 @@ if (-not (Test-Path $DESKTOP_PATH)) {
 }
 
 # Download file
-Write-Host "[1/3] Downloading MaaTKFM2-win-x86_64-$VERSION.zip ..." -ForegroundColor Yellow
+Write-Host "[1/3] Downloading MaaXL-win-x86_64-$VERSION.zip ..." -ForegroundColor Yellow
 Write-Host "  URL: $DOWNLOAD_URL" -ForegroundColor Gray
 
 $downloadSuccess = $false
@@ -78,7 +78,7 @@ try {
     # 如果不是默认版本，尝试使用默认版本
     if ($VERSION -ne $DEFAULT_VERSION) {
         Write-Host "Retrying with default version: $DEFAULT_VERSION ..." -ForegroundColor Yellow
-        $DOWNLOAD_URL = "https://github.com/21dczhang/MAATKFM2/releases/download/$DEFAULT_VERSION/MaaTKFM2-win-x86_64-$DEFAULT_VERSION.zip"
+        $DOWNLOAD_URL = "https://github.com/21dczhang/MAAXL/releases/download/$DEFAULT_VERSION/MaaXL-win-x86_64-$DEFAULT_VERSION.zip"
         
         try {
             (New-Object System.Net.WebClient).DownloadFile($DOWNLOAD_URL, $TEMP_DOWNLOAD)
@@ -95,32 +95,27 @@ if (-not $downloadSuccess) {
     exit 1
 }
 
-# Extract to multiple folders
+# Extract to folder
 Write-Host ""
-Write-Host "[2/3] Extracting to $FOLDER_COUNT folders..." -ForegroundColor Yellow
+Write-Host "[2/3] Extracting to $FOLDER_NAME ..." -ForegroundColor Yellow
 
-for ($i = 1; $i -le $FOLDER_COUNT; $i++) {
-    $folderName = "MaaTKFM20$i"
-    $targetPath = Join-Path $DESKTOP_PATH $folderName
-    
-    Write-Host "  Processing: $folderName ..." -ForegroundColor Gray
-    
-    # Remove existing folder if present
-    if (Test-Path $targetPath) {
-        Write-Host "    Folder exists. Removing..." -ForegroundColor Yellow
-        Remove-Item -Path $targetPath -Recurse -Force
-    }
-    
-    # Create target directory
-    New-Item -ItemType Directory -Path $targetPath -Force | Out-Null
-    
-    # Extract archive
-    try {
-        Expand-Archive -Path $TEMP_DOWNLOAD -DestinationPath $targetPath -Force
-        Write-Host "  Extraction completed for $folderName." -ForegroundColor Green
-    } catch {
-        Write-Host "  Extraction failed for ${folderName}: $_" -ForegroundColor Red
-    }
+$targetPath = Join-Path $DESKTOP_PATH $FOLDER_NAME
+
+# Remove existing folder if present
+if (Test-Path $targetPath) {
+    Write-Host "  Folder exists. Removing..." -ForegroundColor Yellow
+    Remove-Item -Path $targetPath -Recurse -Force
+}
+
+# Create target directory
+New-Item -ItemType Directory -Path $targetPath -Force | Out-Null
+
+# Extract archive
+try {
+    Expand-Archive -Path $TEMP_DOWNLOAD -DestinationPath $targetPath -Force
+    Write-Host "  Extraction completed for $FOLDER_NAME." -ForegroundColor Green
+} catch {
+    Write-Host "  Extraction failed for ${FOLDER_NAME}: $_" -ForegroundColor Red
 }
 
 # Clean up temporary file
@@ -134,11 +129,7 @@ if (Test-Path $TEMP_DOWNLOAD) {
 Write-Host ""
 Write-Host "========================================" -ForegroundColor Cyan
 Write-Host "All operations completed." -ForegroundColor Green
-Write-Host "Extract location: $DESKTOP_PATH" -ForegroundColor Cyan
-Write-Host "Created folders:" -ForegroundColor Cyan
-for ($i = 1; $i -le $FOLDER_COUNT; $i++) {
-    Write-Host "  - MaaTKFM20$i" -ForegroundColor White
-}
+Write-Host "Extract location: $targetPath" -ForegroundColor Cyan
 Write-Host "========================================" -ForegroundColor Cyan
 Write-Host ""
 Write-Host "Press any key to exit..."
