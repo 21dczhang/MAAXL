@@ -64,6 +64,10 @@
             "entry": "LevelUP_Start"
         },
         {
+            "name": "凭证奖励领取",
+            "entry": "PingZheng_Start"
+        },
+        {
             "name": "测试任务",
             "entry": "LevelUP_LevelUP_Start_ChengYuan_Select_Role_inverst_Swip_Once"
         }

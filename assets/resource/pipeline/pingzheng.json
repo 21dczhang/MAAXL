@@ -1,0 +1,199 @@
+{
+    "PingZheng_Start": {
+        "next": [
+            "[JumpBack]PingZheng_Start_Loading",
+            "[JumpBack]PingZheng_Start_Click_Home_Button",
+            "[JumpBack]PingZheng_Start_Click_Comeback_Button",
+            "[JumpBack]PingZheng_Start_Click_Close_Button",
+            "[JumpBack]PingZheng_Start_Click_FanHuiYingDi_Button",
+            "PingZheng_Start_Is_HomePage"
+        ],
+        "focus": "[动作] 开始任务：凭证 经验 & 奖励领取"
+    },
+    "PingZheng_Start_Is_HomePage": {
+        "recognition": "OCR",
+        "expected": [
+            "(?i)UID"
+        ],
+        "next": [
+            "PingZheng_PingZheng_Start"
+        ],
+        "focus": "[状态] 已回到主界面"
+    },
+    "PingZheng_PingZheng_Start": {
+        "next": [
+            "[JumpBack]PingZheng_PingZheng_Start_Goto_PingZheng",
+            "[JumpBack]PingZheng_PingZheng_Start_PingZheng_Claim_EXP",
+            "[JumpBack]PingZheng_PingZheng_Start_PingZheng_Claim_Award",
+            // "[JumpBack]PingZheng_PingZheng_Start_Goto_BoWuJiShi",
+            //这里添加任务，注意max_hit 要设置为1
+            "PingZheng_Start_ComeBack_Home"
+        ],
+        "focus": "[路径] 分配任务：凭证经验 & 奖励领取"
+    },
+    "PingZheng_PingZheng_Start_Goto_PingZheng": {
+        "recognition": "OCR",
+        "expected": [
+            "凭证"
+        ],
+        "max_hit": 1,
+        "post_delay": 5000,
+        "action": "Click",
+        "focus": "[动作] 前往凭证界面"
+    },
+    "PingZheng_PingZheng_Start_PingZheng_Claim_EXP": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "凭证-经验.png"
+        ],
+        "threshold": [
+            0.99
+        ],
+        "max_hit": 1,
+        "post_delay": 1500,
+        "action": "Click",
+        "focus": "[动作] 点击凭证经验领取"
+    },
+    "PingZheng_PingZheng_Start_PingZheng_Claim_EXP2": {
+        "recognition": "OCR",
+        "expected": [
+            "提交"
+        ],
+        "action": "Click",
+        "post_delay": 1500,
+        "timeout": 5000,
+        "next": [
+            "PingZheng_PingZheng_Start_Skip_Award2"
+        ],
+        "focus": "[动作] 提交经验凭证"
+    },
+    "PingZheng_PingZheng_Start_PingZheng_Claim_Award": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "凭证-奖励.png"
+        ],
+        "threshold": [
+            0.99
+        ],
+        "max_hit": 1,
+        "post_delay": 1500,
+        "action": "Click",
+        "next": [
+            "PingZheng_PingZheng_Start_PingZheng_Claim_Award2"
+        ],
+        "focus": "[动作] 点击凭证奖励领取"
+    },
+    "PingZheng_PingZheng_Start_PingZheng_Claim_Award2": {
+        "recognition": "OCR",
+        "expected": [
+            "领取"
+        ],
+        "roi": [
+            1030,
+            576,
+            197,
+            82
+        ],
+        "action": "Click",
+        "post_delay": 1500,
+        "next": [
+            "PingZheng_PingZheng_Start_Skip_Award"
+        ],
+        "timeout": 5000,
+        "focus": "[动作] 确认领取奖励"
+    },
+    "PingZheng_PingZheng_Start_Skip_Award": {
+        "recognition": "OCR",
+        "expected": [
+            "获得物资"
+        ],
+        "action": "Click",
+        "target_offset": [
+            300,
+            0,
+            0,
+            0
+        ],
+        "focus": "[动作] 领取成功，点击屏幕跳过奖励界面"
+    },
+    "PingZheng_PingZheng_Start_Skip_Award2": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            1067,
+            79,
+            37,
+            30
+        ],
+        "focus": "[动作] 关闭奖励窗口"
+    },
+    "PingZheng_Start_Click_Home_Button": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "回到主界面.png"
+        ],
+        "action": "Click",
+        "threshold": [
+            0.95
+        ],
+        "focus": "[动作] 点击回到主界面按钮"
+    },
+    "PingZheng_Start_Click_Comeback_Button": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "返回按键.png"
+        ],
+        "action": "Click",
+        "threshold": [
+            0.95
+        ],
+        "focus": "[动作] 点击返回按键"
+    },
+    "PingZheng_Start_Click_Close_Button": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "关闭图标.png"
+        ],
+        "action": "Click",
+        "threshold": [
+            0.95
+        ],
+        "focus": "[动作] 点击关闭图标"
+    },
+    "PingZheng_Start_Click_FanHuiYingDi_Button": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "返回营地.png"
+        ],
+        "action": "Click",
+        "threshold": [
+            0.95
+        ],
+        "focus": "[动作] 点击返回营地按键"
+    },
+    "PingZheng_Start_ComeBack_Home": {
+        "next": [
+            "[JumpBack]PingZheng_Start_Click_Home_Button",
+            "[JumpBack]PingZheng_Start_Click_Comeback_Button",
+            "[JumpBack]PingZheng_Start_Click_Close_Button",
+            "[JumpBack]PingZheng_Start_Click_FanHuiYingDi_Button",
+            "PingZheng_Start_ComeBack_Home_Is_HomePage"
+        ],
+        "focus": "[动作] 尝试回到主界面"
+    },
+    "PingZheng_Start_ComeBack_Home_Is_HomePage": {
+        "recognition": "OCR",
+        "expected": [
+            "(?i)UID"
+        ],
+        "next": [],
+        "focus": "[状态] 已成功返回主界面，任务结束"
+    },
+    "PingZheng_Start_Loading": {
+        "recognition": "OCR",
+        "expected": [
+            "(?i)Load"
+        ],
+        "focus": "[状态] 界面加载中"
+    }
+}

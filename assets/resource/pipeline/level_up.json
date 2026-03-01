@@ -21,9 +21,6 @@
     },
     "LevelUP_LevelUP_Start": {
         "next": [
-            // "[JumpBack]LevelUP_LevelUP_Start_Goto_JiShi",
-            // "[JumpBack]LevelUP_LevelUP_Start_Goto_BoWuJiShi",
-            //这里添加任务，注意max_hit 要设置为1
             "[JumpBack]LevelUP_LevelUP_Start_Goto_ChengYuan",
             "[JumpBack]LevelUP_LevelUP_Start_ChengYuan_Select_Sort_Method",
             "[JumpBack]LevelUP_LevelUP_Start_ChengYuan_Select_Role_Start",
@@ -39,34 +36,37 @@
         "action": "Click",
         "max_hit": 1,
         "timeout": 5000,
-        "post_delay": 1000
+        "post_delay": 1000,
+        "focus": "[动作] 点击成员图标进入界面"
     },
     "LevelUP_LevelUP_Start_ChengYuan_Select_Sort_Method": {
-        "max_hit": 1,
         "recognition": "TemplateMatch",
+        "template": [
+            "当前是双行排序.png"
+        ],
         "roi": [
             1043,
             20,
             45,
             41
         ],
-        "template": [
-            "当前是双行排序.png"
-        ],
         "threshold": [
             0.99
         ],
-        "enabled": false, //暂时不需要
+        "enabled": false,
+        "max_hit": 1,
         "timeout": 5000,
-        "action": "Click"
+        "action": "Click",
+        "focus": "[动作] 调整成员排序方式"
     },
     "LevelUP_LevelUP_Start_ChengYuan_Select_Role_Start": {
+        "max_hit": 1,
         "next": [
             "[JumpBack]LevelUP_LevelUP_Start_ChengYuan_Select_Role_Start_Select_One",
             "LevelUP_LevelUP_Start_ChengYuan_Select_Role",
             "[JumpBack]LevelUP_LevelUP_Start_ChengYuan_Select_Role_inverst"
         ],
-        "max_hit": 1
+        "focus": "[路径] 开始筛选可升级角色"
     },
     "LevelUP_LevelUP_Start_ChengYuan_Select_Role_Start_Select_One": {
         "recognition": "OCR",
@@ -74,7 +74,8 @@
             "(?i)lv"
         ],
         "action": "Click",
-        "max_hit": 1
+        "max_hit": 1,
+        "focus": "[动作] 选中单个目标"
     },
     "LevelUP_LevelUP_Start_ChengYuan_Select_Role": {
         "recognition": "OCR",
@@ -90,7 +91,8 @@
         "timeout": 5000,
         "next": [
             "LevelUP_LevelUP_Start_ChengYuan_Select_Role_Goto_TiSheng"
-        ]
+        ],
+        "focus": "[动作] 筛选符合条件的升级对象"
     },
     "LevelUP_LevelUP_Start_ChengYuan_Select_Role_Goto_TiSheng": {
         "recognition": "OCR",
@@ -103,11 +105,12 @@
             149,
             543
         ],
+        "action": "Click",
         "timeout": 5000,
         "next": [
             "LevelUP_LevelUP_Start_ChengYuan_Select_Role_TiSheng_Click_TiSheng"
         ],
-        "action": "Click"
+        "focus": "[动作] 前往提升界面"
     },
     "LevelUP_LevelUP_Start_ChengYuan_Select_Role_TiSheng_Click_TiSheng": {
         "recognition": "OCR",
@@ -119,7 +122,8 @@
         "timeout": 5000,
         "next": [
             "LevelUP_LevelUP_Start_ChengYuan_Select_Role_TiSheng_Click_TiSheng"
-        ]
+        ],
+        "focus": "[动作] 连续执行提升操作"
     },
     "LevelUP_LevelUP_Start_ChengYuan_Select_Role_inverst": {
         "recognition": "OCR",
@@ -136,7 +140,8 @@
         "inverse": true,
         "next": [
             "LevelUP_LevelUP_Start_ChengYuan_Select_Role_inverst_Swip_Once"
-        ]
+        ],
+        "focus": "[状态] 检查当前页面角色是否均不可升级"
     },
     "LevelUP_LevelUP_Start_ChengYuan_Select_Role_inverst_Swip_Once": {
         "action": "Swipe",
@@ -148,237 +153,8 @@
         "end": [
             500,
             650
-        ]
-        // "end": [
-        //     [
-        //         1145,
-        //         650
-        //     ],
-        //     [
-        //         1125,
-        //         650
-        //     ],
-        //     [
-        //         1105,
-        //         650
-        //     ],
-        //     [
-        //         1085,
-        //         650
-        //     ],
-        //     [
-        //         1065,
-        //         650
-        //     ],
-        //     [
-        //         1045,
-        //         650
-        //     ],
-        //     [
-        //         1025,
-        //         650
-        //     ],
-        //     [
-        //         1005,
-        //         650
-        //     ],
-        //     [
-        //         985,
-        //         650
-        //     ],
-        //     [
-        //         965,
-        //         650
-        //     ],
-        //     [
-        //         945,
-        //         650
-        //     ],
-        //     [
-        //         925,
-        //         650
-        //     ],
-        //     [
-        //         905,
-        //         650
-        //     ],
-        //     [
-        //         885,
-        //         650
-        //     ],
-        //     [
-        //         865,
-        //         650
-        //     ],
-        //     [
-        //         845,
-        //         650
-        //     ],
-        //     [
-        //         825,
-        //         650
-        //     ],
-        //     [
-        //         805,
-        //         650
-        //     ],
-        //     [
-        //         785,
-        //         650
-        //     ],
-        //     [
-        //         765,
-        //         650
-        //     ],
-        //     [
-        //         745,
-        //         650
-        //     ],
-        //     [
-        //         725,
-        //         650
-        //     ],
-        //     [
-        //         705,
-        //         650
-        //     ],
-        //     [
-        //         685,
-        //         650
-        //     ],
-        //     [
-        //         665,
-        //         650
-        //     ],
-        //     [
-        //         645,
-        //         650
-        //     ],
-        //     [
-        //         625,
-        //         650
-        //     ],
-        //     [
-        //         605,
-        //         650
-        //     ],
-        //     [
-        //         585,
-        //         650
-        //     ],
-        //     [
-        //         565,
-        //         650
-        //     ],
-        //     [
-        //         545,
-        //         650
-        //     ],
-        //     [
-        //         525,
-        //         650
-        //     ],
-        //     [
-        //         505,
-        //         650
-        //     ],
-        //     [
-        //         485,
-        //         650
-        //     ],
-        //     [
-        //         465,
-        //         650
-        //     ],
-        //     [
-        //         445,
-        //         650
-        //     ],
-        //     [
-        //         425,
-        //         650
-        //     ],
-        //     [
-        //         405,
-        //         650
-        //     ],
-        //     [
-        //         385,
-        //         650
-        //     ],
-        //     [
-        //         365,
-        //         650
-        //     ],
-        //     [
-        //         345,
-        //         650
-        //     ],
-        //     [
-        //         325,
-        //         650
-        //     ],
-        //     [
-        //         305,
-        //         650
-        //     ],
-        //     [
-        //         285,
-        //         650
-        //     ],
-        //     [
-        //         265,
-        //         650
-        //     ],
-        //     [
-        //         245,
-        //         650
-        //     ],
-        //     [
-        //         225,
-        //         650
-        //     ],
-        //     [
-        //         205,
-        //         650
-        //     ],
-        //     [
-        //         185,
-        //         650
-        //     ],
-        //     [
-        //         165,
-        //         650
-        //     ],
-        //     [
-        //         145,
-        //         650
-        //     ],
-        //     [
-        //         125,
-        //         650
-        //     ],
-        //     [
-        //         105,
-        //         650
-        //     ],
-        //     [
-        //         85,
-        //         650
-        //     ],
-        //     [
-        //         65,
-        //         650
-        //     ],
-        //     [
-        //         45,
-        //         650
-        //     ],
-        //     [
-        //         25,
-        //         650
-        //     ]
-        // ]
+        ],
+        "focus": "[动作] 页面滑动翻页"
     },
     "LevelUP_LevelUP_Start_Skip_Award": {
         "recognition": "OCR",
@@ -425,7 +201,7 @@
         "threshold": [
             0.95
         ],
-        "focus": "[动作] 点击返回按键"
+        "focus": "[动作] 点击关闭图标"
     },
     "LevelUP_Start_ComeBack_Home": {
         "next": [
