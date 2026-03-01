@@ -1,270 +1,88 @@
 {
-    "Template_Start": {
+    "Template2_Start": {
         "next": [
-            "[JumpBack]Template_LinkError",
-            "[JumpBack]Template_LinkError_ServerError",
-            "[JumpBack]Template_TouchStart_Connecting",
-            "[JumpBack]Template_Skip_Notice",
-            "[JumpBack]Template_TouchStart",
-            "Template_HomePage",
-            "[JumpBack]Template_callBackup_button",
+            "[JumpBack]Template2_Start_Loading",
+            "[JumpBack]Template2_Start_Click_Home_Button",
+            "Template2_Start_Is_HomePage"
         ],
-        "pre_wait_freezes": 500,
-        "doc": "开始自动炼金",
-        "focus": "[状态]准备执行自动炼金任务",
+        "focus": "[动作] 开始任务：领取免费礼包"
     },
-    "Template_Logo": {
+    "Template2_Start_Is_HomePage": {
         "recognition": "OCR",
-        "next": [
-            "[JumpBack]Template_LinkError",
-            "[JumpBack]Template_LinkError_ServerError",
-            "[JumpBack]Template_TouchStart_Connecting",
-            "Template_LoadingPage",
-            "Template_Logo",
-            "Template_TouchStart"
-        ],
-        "roi": [
-            168,
-            566,
-            373,
-            86
-        ],
         "expected": [
-            "(?i)labs"
+            "(?i)UID"
         ],
-        "focus": "[状态]检测到 EROLABS LOGO 界面",
-        "post_delay": 6000,
-        "timeout": 20000
-    },
-    "Template_LoadingPage": {
-        "recognition": "OCR",
         "next": [
-            "[JumpBack]Template_LinkError",
-            "[JumpBack]Template_LinkError_ServerError",
-            "[JumpBack]Template_TouchStart_Connecting",
-            "[JumpBack]Template_Skip_Notice",
-            "Template_TouchStart",
-            "Template_LoadingPage"
+            "Template2_Template2_Start"
         ],
-        "roi": [
-            156,
-            1074,
-            200,
-            38
-        ],
-        "expected": [
-            "(?i)ka"
-        ],
-        "focus": "[状态]游戏加载中 (TenkafuMA)...",
-        "pre_wait_freezes": 3000,
-        "timeout": 50000
+        "focus": "[状态] 已回到主界面"
     },
-    "Template_Skip_Notice": {
+    "Template2_Template2_Start": {
+        "next": [
+            // "[JumpBack]Template2_Template2_Start_Goto_JiShi",
+            // "[JumpBack]Template2_Template2_Start_Goto_BoWuJiShi",
+            //这里添加任务，注意max_hit 要设置为1
+            "Template2_Start_ComeBack_Home"
+        ],
+        "focus": "[路径] 分配任务：前往集市或博物集市"
+    },
+    "Template2_Template2_Start_Skip_Award": {
         "recognition": "OCR",
-        "expected": "公",
-        "roi": [
-            276,
-            167,
-            171,
-            48
+        "expected": [
+            "获得物资"
         ],
         "action": "Click",
-        "target": [
-            344,
-            1141,
-            29,
-            26
-        ],
-        "focus": "[动作]检测到公告，点击关闭按钮"
-    },
-    "Template_TouchStart": {
-        "recognition": "OCR",
-        "next": [
-            "[JumpBack]Template_LinkError",
-            "[JumpBack]Template_LinkError_ServerError",
-            "Template_HomePage",
-            "[JumpBack]Template_TouchStart_Connecting",
-            "[JumpBack]Template_Skip_Notice",
-            "Template_TouchStart",
-            "[JumpBack]Template_callBackup_button",
-        ],
-        "roi": [
-            201,
-            1128,
-            314,
-            42
-        ],
-        "expected": "(?i)St",
-        "action": "Click",
-        "timeout": 30000,
-        "focus": "[动作]点击 TAP TO START 进入游戏",
-    },
-    "Template_TouchStart_Connecting": {
-        "recognition": "OCR",
-        "roi": [
-            210,
-            1205,
+        "target_offset": [
             300,
-            34
+            0,
+            0,
+            0
         ],
-        "expected": "(?i)N",
-        "threshold": 0.5,
-        "action": "DoNothing",
-        "focus": "[状态]登录界面网络连接中"
+        "focus": "[动作] 领取成功，点击屏幕跳过奖励界面"
     },
-    "Template_callBackup_button": {
-        "recognition": "DirectHit",
-        "next": [
-            "[JumpBack]Template_LinkError",
-            "[JumpBack]Template_LinkError_ServerError",
-            "[JumpBack]Template_TouchStart_Connecting",
+    "Template2_Start_Click_Home_Button": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "回到主界面.png"
         ],
-        "timeout": 1000,
-        "action": "ClickKey",
-        "key": 4,
-        // "pre_wait_freezes": 500,
-        // "post_wait_freezes": 500,
-        "focus": "[动作]触发返回键指令：尝试跳过干扰弹窗"
-    },
-    "Template_HomePage": {
-        "recognition": "OCR",
-        "next": [
-            "[JumpBack]Template_LinkError",
-            "[JumpBack]Template_LinkError_ServerError",
-            "[JumpBack]Template_HomePage_Conneting",
-            "Template_HomePage2",
-            "[JumpBack]Template_Logo",
-            "[JumpBack]Template_LoadingPage",
-            "[JumpBack]Template_callBackup_button",
-        ],
-        "roi": [
-            445,
-            867,
-            250,
-            249
-        ],
-        "expected": "出征",
-        "post_delay": 1000,
-        "focus": "[状态]检测到主界面出征标识，等待验证",
-    },
-    "Template_HomePage2": {
-        "recognition": "OCR",
-        "next": [
-            "[JumpBack]Template_LinkError",
-            "[JumpBack]Template_LinkError_ServerError",
-            "[JumpBack]Template_TouchStart_Connecting",
-            "Template_GotoTemplate1"
-        ],
-        "roi": [
-            445,
-            867,
-            250,
-            249
-        ],
-        "expected": "出征",
-        "focus": "[状态]确认已回到主界面"
-    },
-    "Template_GotoTemplate1": {
         "action": "Click",
+        "threshold": [
+            0.95
+        ],
+        "focus": "[动作] 点击回到主界面按钮"
+    },
+    "Template2_Start_Click_Comeback_Button": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "返回按键.png"
+        ],
+        "action": "Click",
+        "threshold": [
+            0.95
+        ],
+        "focus": "[动作] 点击返回按键"
+    },
+    "Template2_Start_ComeBack_Home": {
         "next": [
-            "[JumpBack]Template_LinkError",
-            "[JumpBack]Template_LinkError_ServerError",
-            "[JumpBack]Template_TouchStart_Connecting",
-            //"Template_GotoTemplate2",这里是任务起点，在这里添加自己的任务
+            "[JumpBack]Template2_Start_Click_Home_Button",
+            "[JumpBack]Template2_Start_Click_Comeback_Button",
+            "Template2_Start_ComeBack_Home_Is_HomePage"
         ],
-        "target": [
-            15,
-            617,
-            26,
-            27
-        ],
-        "post_delay": 1500,
-        "focus": "[动作]点击进入炼金系统界面"
+        "focus": "[动作] 尝试回到主界面"
     },
-    "Template_Comeback_home": {
-        "action": "ClickKey",
-        "next": [
-            "[JumpBack]Template_LinkError",
-            "[JumpBack]Template_LinkError_ServerError",
-            "[JumpBack]Template_TouchStart_Connecting",
-            "Template_HomePage_Without_Next",
-            "[JumpBack]Template_callBackup_button"
-        ],
-        "key": [
-            4
-        ],
-        "focus": "[动作]任务执行完毕，发送返回键以回到主界面"
-    },
-    "Template_HomePage_Without_Next": {
+    "Template2_Start_ComeBack_Home_Is_HomePage": {
         "recognition": "OCR",
-        "roi": [
-            389,
-            837,
-            303,
-            295
-        ],
-        "expected": "出征",
-        "post_delay": 1000,
-        "focus": "[状态]检测到出征按钮：已回到主界面，任务流结束"
-    },
-    "Template_HomePage_Conneting": {
-        "recognition": "OCR",
-        "roi": [
-            210,
-            1205,
-            300,
-            34
-        ],
-        "expected": "(?i)N",
-        "threshold": 0.5,
-        "focus": "[状态]主界面网络波动，等待重新连接"
-    },
-    "Template_LinkError": {
-        "recognition": "OCR",
-        "next": [
-            "[JumpBack]Template_TouchStart_Connecting",
-            "Template_LinkError2"
-        ],
-        "roi": [
-            124,
-            594,
-            343,
-            65
-        ],
-        "expected": "不稳定",
-        "focus": "[异常]网络连线不稳定"
-    },
-    "Template_LinkError_ServerError": {
-        "recognition": "OCR",
-        "next": [
-            "Template_LinkError2"
-        ],
-        "roi": [
-            121,
-            602,
-            323,
-            43
-        ],
-        "expected": "联机",
-        "focus": "[异常]服务器无回应，联机错误"
-    },
-    "Template_LinkError2": {
-        "recognition": "OCR",
-        "next": [
-            "[JumpBack]Template_LinkError2",
-            "Template_Start"
-        ],
-        "roi": [
-            264,
-            698,
-            191,
-            47
-        ],
         "expected": [
-            "重新连线",
-            "确定"
+            "(?i)UID"
         ],
-        "action": "Click",
-        "focus": "[动作]点击确定/重新连接按钮",
+        "next": [],
+        "focus": "[状态] 已成功返回主界面，任务结束"
+    },
+    "Template2_Start_Loading": {
+        "recognition": "OCR",
+        "expected": [
+            "(?i)Load"
+        ],
+        "focus": "[状态] 界面加载中"
     }
 }
