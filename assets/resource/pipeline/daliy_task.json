@@ -1,0 +1,185 @@
+{
+    "Daily_Task_Start": {
+        "next": [
+            "[JumpBack]Daily_Task_Start_Loading",
+            "[JumpBack]Daily_Task_Start_Click_Home_Button",
+            "[JumpBack]Daily_Task_Start_Click_Comeback_Button",
+            "[JumpBack]Daily_Task_Start_Click_Close_Button",
+            "[JumpBack]Daily_Task_Start_Click_FanHuiYingDi_Button",
+            "Daily_Task_Start_Is_HomePage"
+        ],
+        "focus": "[动作] 开始任务：领取免费礼包"
+    },
+    "Daily_Task_Start_Is_HomePage": {
+        "recognition": "OCR",
+        "expected": [
+            "(?i)UID"
+        ],
+        "next": [
+            "Daily_Task_Daily_Task_Start"
+        ],
+        "focus": "[状态] 已回到主界面"
+    },
+    "Daily_Task_Daily_Task_Start": {
+        "next": [
+            "[JumpBack]Daily_Task_Daily_Task_Start_Goto_Daily_Task",
+            "[JumpBack]Daily_Task_Daily_Task_Start_Claim_Exp",
+            "[JumpBack]Daily_Task_Daily_Task_Start_Claim_Award",
+            //这里添加任务，注意max_hit 要设置为1
+            "Daily_Task_Start_ComeBack_Home"
+        ],
+        "focus": "[路径] 分配任务：前往集市或博物集市"
+    },
+    "Daily_Task_Daily_Task_Start_Goto_Daily_Task": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            838,
+            195,
+            20,
+            20
+        ],
+        "max_hit": 1,
+        "post_delay": 500,
+        "next": [
+            "Daily_Task_Daily_Task_Start_Goto_Daily_Task2"
+        ]
+    },
+    "Daily_Task_Daily_Task_Start_Goto_Daily_Task2": {
+        "recognition": "OCR",
+        "expected": [
+            "每日历练"
+        ],
+        "action": "Click",
+        "roi": [
+            26,
+            612,
+            740,
+            86
+        ],
+        "post_delay": 3000
+    },
+    "Daily_Task_Daily_Task_Start_Claim_Exp": {
+        "recognition": "OCR",
+        "expected": [
+            "提交"
+        ],
+        "roi": [
+            1023,
+            128,
+            205,
+            423
+        ],
+        "post_delay": 1500,
+        "max_hit": 1,
+        "next": [
+            "Daily_Task_Daily_Task_Start_Skip_Award"
+        ],
+        "action": "Click"
+    },
+    "Daily_Task_Daily_Task_Start_Claim_Award": {
+        "recognition": "OCR",
+        "expected": [
+            "查看活跃奖励"
+        ],
+        "roi": [
+            213,
+            481,
+            213,
+            41
+        ],
+        "post_delay": 1500,
+        "max_hit": 1,
+        "next": [
+            "Daily_Task_Daily_Task_Start_Skip_Award"
+        ],
+        "action": "Click"
+    },
+    "Daily_Task_Daily_Task_Start_Skip_Award": {
+        "recognition": "OCR",
+        "expected": [
+            "获得物资"
+        ],
+        "action": "Click",
+        "target_offset": [
+            300,
+            0,
+            0,
+            0
+        ],
+        "focus": "[动作] 领取成功，点击屏幕跳过奖励界面"
+    },
+    "Daily_Task_Start_Click_Home_Button": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "回到主界面.png"
+        ],
+        "action": "Click",
+        "threshold": [
+            0.95
+        ],
+        "post_delay": 1000,
+        "focus": "[动作] 点击回到主界面按钮"
+    },
+    "Daily_Task_Start_Click_Comeback_Button": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "返回按键.png"
+        ],
+        "action": "Click",
+        "threshold": [
+            0.95
+        ],
+        "post_delay": 1000,
+        "focus": "[动作] 点击返回按键"
+    },
+    "Daily_Task_Start_Click_Close_Button": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "关闭图标.png"
+        ],
+        "action": "Click",
+        "threshold": [
+            0.95
+        ],
+        "post_delay": 1000,
+        "focus": "[动作] 点击关闭图标"
+    },
+    "Daily_Task_Start_Click_FanHuiYingDi_Button": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "返回营地.png"
+        ],
+        "action": "Click",
+        "threshold": [
+            0.95
+        ],
+        "post_delay": 1000,
+        "focus": "[动作] 点击返回营地按键"
+    },
+    "Daily_Task_Start_ComeBack_Home": {
+        "next": [
+            "[JumpBack]Daily_Task_Start_Click_Home_Button",
+            "[JumpBack]Daily_Task_Start_Click_Comeback_Button",
+            "[JumpBack]Daily_Task_Start_Click_Close_Button",
+            "[JumpBack]Daily_Task_Start_Click_FanHuiYingDi_Button",
+            "Daily_Task_Start_ComeBack_Home_Is_HomePage"
+        ],
+        "focus": "[动作] 尝试回到主界面"
+    },
+    "Daily_Task_Start_ComeBack_Home_Is_HomePage": {
+        "recognition": "OCR",
+        "expected": [
+            "(?i)UID"
+        ],
+        "next": [],
+        "focus": "[状态] 已成功返回主界面，任务结束"
+    },
+    "Daily_Task_Start_Loading": {
+        "recognition": "OCR",
+        "expected": [
+            "(?i)Load"
+        ],
+        "focus": "[状态] 界面加载中"
+    }
+}
