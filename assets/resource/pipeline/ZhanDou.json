@@ -1,0 +1,279 @@
+{
+    "ZhanDou_Start": {
+        "next": [
+            "[JumpBack]ZhanDou_Start_Loading",
+            "[JumpBack]ZhanDou_Start_Click_Home_Button",
+            "[JumpBack]ZhanDou_Start_Click_Comeback_Button",
+            "[JumpBack]ZhanDou_Start_Click_Close_Button",
+            "[JumpBack]ZhanDou_Start_Click_FanHuiYingDi_Button",
+            "ZhanDou_Start_Is_HomePage"
+        ],
+        "focus": "[动作] 开始任务：领取免费礼包"
+    },
+    "ZhanDou_Start_Is_HomePage": {
+        "recognition": "OCR",
+        "expected": [
+            "(?i)UID"
+        ],
+        "next": [
+            "ZhanDou_ZhanDou_Start"
+        ],
+        "focus": "[状态] 已回到主界面"
+    },
+    "ZhanDou_ZhanDou_Start": {
+        "next": [
+            "[JumpBack]ZhanDou_ZhanDou_Start_Goto_ZhanDou",
+            "[JumpBack]ZhanDou_ZhanDou_Start_ZhanDou_Select_CeLue",
+            //这里添加任务，注意max_hit 要设置为1
+            "ZhanDou_Start_ComeBack_Home"
+        ],
+        "focus": "[路径] 分配任务：前往集市或博物集市"
+    },
+    "ZhanDou_ZhanDou_Start_Goto_ZhanDou": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            1145,
+            276,
+            28,
+            16
+        ],
+        "max_hit": 1,
+        "next": [
+            "ZhanDou_ZhanDou_Start_Goto_ZhanDou2"
+        ],
+        "post_delay": 1000
+    },
+    "ZhanDou_ZhanDou_Start_Goto_ZhanDou2": {
+        "recognition": "OCR",
+        "expected": [
+            "物资补给"
+        ],
+        "roi": [
+            76,
+            594,
+            1171,
+            94
+        ],
+        "action": "Click",
+        "max_hit": 1,
+        "next": [
+            "ZhanDou_ZhanDou_Start_Goto_ZhanDou3"
+        ],
+        "post_delay": 1000
+    },
+    "ZhanDou_ZhanDou_Start_Goto_ZhanDou3": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            631,
+            427,
+            32,
+            12
+        ],
+        "post_delay": 1000
+    },
+    "ZhanDou_ZhanDou_Start_ZhanDou_Select_CeLue": {
+        "next": [],
+        "max_hit": 1
+    },
+    "ZhanDou_ZhanDou_Start_ZhanDou_Select_JingBi": {
+        "recognition": "OCR",
+        "expected": [
+            "货币试炼"
+        ],
+        "action": "Click",
+        "max_hit": 2,
+        "next": [
+            "ZhanDou_ZhanDou_Start_ZhanDou_Select_JingBi",
+            "ZhanDou_ZhanDou_Start_ZhanDou_Select_JingBi_Lv"
+        ]
+    },
+    "ZhanDou_ZhanDou_Start_ZhanDou_Select_JingBi_Lv": {
+        "recognition": "OCR",
+        "expected": [
+            "货币试炼V",
+            "货币试炼IV"
+        ],
+        "order_by": "Expected",
+        "action": "Click",
+        "next": [
+            "ZhanDou_ZhanDou_Start_ZhanDou_Click_PaiQian"
+        ]
+    },
+    "ZhanDou_ZhanDou_Start_ZhanDou_Select_JingYan": {
+        "recognition": "OCR",
+        "expected": [
+            "战术演练"
+        ],
+        "action": "Click",
+        "max_hit": 2,
+        "next": [
+            "ZhanDou_ZhanDou_Start_ZhanDou_Select_JingYan",
+            "ZhanDou_ZhanDou_Start_ZhanDou_Select_JingYan_Lv"
+        ]
+    },
+    "ZhanDou_ZhanDou_Start_ZhanDou_Select_JingYan_Lv": {
+        "recognition": "OCR",
+        "expected": [
+            "战术演练IV",
+            "战术演练Ⅲ"
+        ],
+        "order_by": "Expected",
+        "action": "Click",
+        "next": [
+            "ZhanDou_ZhanDou_Start_ZhanDou_Click_PaiQian"
+        ],
+        "post_delay": 500
+    },
+    "ZhanDou_ZhanDou_Start_ZhanDou_Select_JiNeng": {
+        "recognition": "OCR",
+        "expected": [
+            "技能修行"
+        ],
+        "action": "Click",
+        "max_hit": 2,
+        "next": [
+            "ZhanDou_ZhanDou_Start_ZhanDou_Select_JiNeng",
+            "ZhanDou_ZhanDou_Start_ZhanDou_Select_JiNeng_Lv"
+        ]
+    },
+    "ZhanDou_ZhanDou_Start_ZhanDou_Select_JiNeng_Lv": {
+        "recognition": "OCR",
+        "expected": [
+            "技能修行IV",
+            "技能修行Ⅲ"
+        ],
+        "order_by": "Expected",
+        "action": "Click",
+        "next": [
+            "ZhanDou_ZhanDou_Start_ZhanDou_Click_PaiQian"
+        ],
+        "post_delay": 500
+    },
+    "ZhanDou_ZhanDou_Start_ZhanDou_Click_PaiQian": {
+        "recognition": "OCR",
+        "expected": [
+            "派遣"
+        ],
+        "action": "Click",
+        "post_delay": 800,
+        "next": [
+            "ZhanDou_ZhanDou_Start_ZhanDou_Click_PaiQian2"
+        ]
+    },
+    "ZhanDou_ZhanDou_Start_ZhanDou_Click_PaiQian2": {
+        "recognition": "OCR",
+        "expected": [
+            "派遣"
+        ],
+        "roi": [
+            902,
+            542,
+            184,
+            50
+        ],
+        "action": "Click",
+        "post_delay": 3000,
+        "next": [
+            "ZhanDou_ZhanDou_Start_ZhanDou_Click_PaiQian2",
+            "ZhanDou_ZhanDou_Start_ZhanDou_NO_Enought_AP"
+        ],
+        "focus": "直接点击5次派遣"
+    },
+    "ZhanDou_ZhanDou_Start_ZhanDou_NO_Enought_AP": {
+        "recognition": "OCR",
+        "expected": [
+            "完全恢复",
+            "下次恢复"
+        ],
+        "next": []
+    },
+    "ZhanDou_ZhanDou_Start_Skip_Award": {
+        "recognition": "OCR",
+        "expected": [
+            "获得物资"
+        ],
+        "action": "Click",
+        "target_offset": [
+            300,
+            0,
+            0,
+            0
+        ],
+        "focus": "[动作] 领取成功，点击屏幕跳过奖励界面"
+    },
+    "ZhanDou_Start_Click_Home_Button": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "回到主界面.png"
+        ],
+        "action": "Click",
+        "threshold": [
+            0.95
+        ],
+        "post_delay": 1000,
+        "focus": "[动作] 点击回到主界面按钮"
+    },
+    "ZhanDou_Start_Click_Comeback_Button": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "返回按键.png"
+        ],
+        "action": "Click",
+        "threshold": [
+            0.95
+        ],
+        "post_delay": 1000,
+        "focus": "[动作] 点击返回按键"
+    },
+    "ZhanDou_Start_Click_Close_Button": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "关闭图标.png"
+        ],
+        "action": "Click",
+        "threshold": [
+            0.95
+        ],
+        "post_delay": 1000,
+        "focus": "[动作] 点击关闭图标"
+    },
+    "ZhanDou_Start_Click_FanHuiYingDi_Button": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "返回营地.png"
+        ],
+        "action": "Click",
+        "threshold": [
+            0.95
+        ],
+        "post_delay": 1000,
+        "focus": "[动作] 点击返回营地按键"
+    },
+    "ZhanDou_Start_ComeBack_Home": {
+        "next": [
+            "[JumpBack]ZhanDou_Start_Click_Home_Button",
+            "[JumpBack]ZhanDou_Start_Click_Comeback_Button",
+            "[JumpBack]ZhanDou_Start_Click_Close_Button",
+            "[JumpBack]ZhanDou_Start_Click_FanHuiYingDi_Button",
+            "ZhanDou_Start_ComeBack_Home_Is_HomePage"
+        ],
+        "focus": "[动作] 尝试回到主界面"
+    },
+    "ZhanDou_Start_ComeBack_Home_Is_HomePage": {
+        "recognition": "OCR",
+        "expected": [
+            "(?i)UID"
+        ],
+        "next": [],
+        "focus": "[状态] 已成功返回主界面，任务结束"
+    },
+    "ZhanDou_Start_Loading": {
+        "recognition": "OCR",
+        "expected": [
+            "(?i)Load"
+        ],
+        "focus": "[状态] 界面加载中"
+    }
+}

@@ -8,7 +8,7 @@
             "[JumpBack]TanXianDui_Start_Click_FanHuiYingDi_Button",
             "TanXianDui_Start_Is_HomePage"
         ],
-        "focus": "[动作] 开始任务：领取免费礼包"
+        "focus": "[动作] 开始任务：领取探险队礼包"
     },
     "TanXianDui_Start_Is_HomePage": {
         "recognition": "OCR",
@@ -27,7 +27,7 @@
             //这里添加任务，注意max_hit 要设置为1
             "TanXianDui_Start_ComeBack_Home"
         ],
-        "focus": "[路径] 分配任务：前往探险队"
+        "focus": "[路径] 分配任务：前往探险队页面"
     },
     "TanXianDui_TanXianDui_Start_Goto_TanXianDui": {
         "recognition": "OCR",
@@ -36,7 +36,8 @@
         ],
         "action": "Click",
         "max_hit": 1,
-        "post_delay": 1500
+        "post_delay": 1500,
+        "focus": "[动作] 点击进入探险队"
     },
     "TanXianDui_TanXianDui_Start_TanXianDui_TuanDuiDeKuiLi": {
         "recognition": "OCR",
@@ -44,11 +45,12 @@
             "团队的馈礼"
         ],
         "action": "Click",
+        "max_hit": 1,
+        "post_delay": 1500,
         "next": [
             "TanXianDui_TanXianDui_Start_TanXianDui_TuanDuiDeKuiLi_Click_Award"
         ],
-        "max_hit": 1,
-        "post_delay": 1500
+        "focus": "[动作] 点击团队的馈礼"
     },
     "TanXianDui_TanXianDui_Start_TanXianDui_TuanDuiDeKuiLi_Click_Award": {
         "recognition": "TemplateMatch",
@@ -68,7 +70,8 @@
         "post_delay": 1500,
         "next": [
             "TanXianDui_TanXianDui_Start_Skip_Award"
-        ]
+        ],
+        "focus": "[动作] 点击领取具体奖励"
     },
     "TanXianDui_TanXianDui_Start_Skip_Award": {
         "recognition": "OCR",

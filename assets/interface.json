@@ -75,9 +75,54 @@
             "description": "领取探险队每日奖励"
         },
         {
+            "name": "战斗 - 副本",
+            "entry": "ZhanDou_Start",
+            "description": "战斗 - 消耗体力",
+            "option": [
+                "体力消耗选择"
+            ]
+        },
+        {
             "name": "测试任务",
-            "entry": "Daily_Task_Start"
+            "entry": "ZhanDou_ZhanDou_Start_ZhanDou_Select_JiNeng_Lv"
         }
     ],
-    "option": {}
+    "option": {
+        "体力消耗选择": {
+            "type": "select",
+            "default_case": "货币试炼 - 金币",
+            "cases": [
+                {
+                    "name": "货币试炼 - 金币",
+                    "pipeline_override": {
+                        "ZhanDou_ZhanDou_Start_ZhanDou_Select_CeLue": {
+                            "next": [
+                                "ZhanDou_ZhanDou_Start_ZhanDou_Select_JingBi"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "战术演练 - 经验",
+                    "pipeline_override": {
+                        "ZhanDou_ZhanDou_Start_ZhanDou_Select_CeLue": {
+                            "next": [
+                                "ZhanDou_ZhanDou_Start_ZhanDou_Select_JingYan"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "技能修行 - 技能书",
+                    "pipeline_override": {
+                        "ZhanDou_ZhanDou_Start_ZhanDou_Select_CeLue": {
+                            "next": [
+                                "ZhanDou_ZhanDou_Start_ZhanDou_Select_JiNeng"
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    }
 }
