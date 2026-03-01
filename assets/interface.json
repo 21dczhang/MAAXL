@@ -60,8 +60,12 @@
             "description": "日程表一键收取"
         },
         {
+            "name": "升级角色10次 - 完成日常任务升级&消耗金币2w",
+            "entry": "LevelUP_Start"
+        },
+        {
             "name": "测试任务",
-            "entry": "RiChengBiao_RiChengBiao_Start_RiChengBiao_Dont_Double_Check"
+            "entry": "LevelUP_LevelUP_Start_ChengYuan_Select_Role_inverst_Swip_Once"
         }
     ],
     "option": {}

@@ -1,0 +1,454 @@
+{
+    "LevelUP_Start": {
+        "next": [
+            "[JumpBack]LevelUP_Start_Loading",
+            "[JumpBack]LevelUP_Start_Click_Home_Button",
+            "[JumpBack]LevelUP_Start_Click_Comeback_Button",
+            "[JumpBack]LevelUP_Start_Click_Close_Button",
+            "LevelUP_Start_Is_HomePage"
+        ],
+        "focus": "[动作] 开始任务：领取免费礼包"
+    },
+    "LevelUP_Start_Is_HomePage": {
+        "recognition": "OCR",
+        "expected": [
+            "(?i)UID"
+        ],
+        "next": [
+            "LevelUP_LevelUP_Start"
+        ],
+        "focus": "[状态] 已回到主界面"
+    },
+    "LevelUP_LevelUP_Start": {
+        "next": [
+            // "[JumpBack]LevelUP_LevelUP_Start_Goto_JiShi",
+            // "[JumpBack]LevelUP_LevelUP_Start_Goto_BoWuJiShi",
+            //这里添加任务，注意max_hit 要设置为1
+            "[JumpBack]LevelUP_LevelUP_Start_Goto_ChengYuan",
+            "[JumpBack]LevelUP_LevelUP_Start_ChengYuan_Select_Sort_Method",
+            "[JumpBack]LevelUP_LevelUP_Start_ChengYuan_Select_Role_Start",
+            "LevelUP_Start_ComeBack_Home"
+        ],
+        "focus": "[路径] 分配任务：前往集市或博物集市"
+    },
+    "LevelUP_LevelUP_Start_Goto_ChengYuan": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "成员图标.png"
+        ],
+        "action": "Click",
+        "max_hit": 1,
+        "timeout": 5000,
+        "post_delay": 1000
+    },
+    "LevelUP_LevelUP_Start_ChengYuan_Select_Sort_Method": {
+        "max_hit": 1,
+        "recognition": "TemplateMatch",
+        "roi": [
+            1043,
+            20,
+            45,
+            41
+        ],
+        "template": [
+            "当前是双行排序.png"
+        ],
+        "threshold": [
+            0.99
+        ],
+        "enabled": false, //暂时不需要
+        "timeout": 5000,
+        "action": "Click"
+    },
+    "LevelUP_LevelUP_Start_ChengYuan_Select_Role_Start": {
+        "next": [
+            "[JumpBack]LevelUP_LevelUP_Start_ChengYuan_Select_Role_Start_Select_One",
+            "LevelUP_LevelUP_Start_ChengYuan_Select_Role",
+            "[JumpBack]LevelUP_LevelUP_Start_ChengYuan_Select_Role_inverst"
+        ],
+        "max_hit": 1
+    },
+    "LevelUP_LevelUP_Start_ChengYuan_Select_Role_Start_Select_One": {
+        "recognition": "OCR",
+        "expected": [
+            "(?i)lv"
+        ],
+        "action": "Click",
+        "max_hit": 1
+    },
+    "LevelUP_LevelUP_Start_ChengYuan_Select_Role": {
+        "recognition": "OCR",
+        "expected": [
+            "\\b(?!30\\b|60\\b|90\\b)\\d+\\b"
+        ],
+        "roi": [
+            61,
+            237,
+            94,
+            58
+        ],
+        "timeout": 5000,
+        "next": [
+            "LevelUP_LevelUP_Start_ChengYuan_Select_Role_Goto_TiSheng"
+        ]
+    },
+    "LevelUP_LevelUP_Start_ChengYuan_Select_Role_Goto_TiSheng": {
+        "recognition": "OCR",
+        "expected": [
+            "提升"
+        ],
+        "roi": [
+            1113,
+            82,
+            149,
+            543
+        ],
+        "timeout": 5000,
+        "next": [
+            "LevelUP_LevelUP_Start_ChengYuan_Select_Role_TiSheng_Click_TiSheng"
+        ],
+        "action": "Click"
+    },
+    "LevelUP_LevelUP_Start_ChengYuan_Select_Role_TiSheng_Click_TiSheng": {
+        "recognition": "OCR",
+        "expected": [
+            "提升"
+        ],
+        "action": "Click",
+        "max_hit": 10,
+        "timeout": 5000,
+        "next": [
+            "LevelUP_LevelUP_Start_ChengYuan_Select_Role_TiSheng_Click_TiSheng"
+        ]
+    },
+    "LevelUP_LevelUP_Start_ChengYuan_Select_Role_inverst": {
+        "recognition": "OCR",
+        "expected": [
+            "\\b(?!30\\b|60\\b|90\\b)\\d+\\b"
+        ],
+        "roi": [
+            61,
+            237,
+            94,
+            58
+        ],
+        "timeout": 5000,
+        "inverse": true,
+        "next": [
+            "LevelUP_LevelUP_Start_ChengYuan_Select_Role_inverst_Swip_Once"
+        ]
+    },
+    "LevelUP_LevelUP_Start_ChengYuan_Select_Role_inverst_Swip_Once": {
+        "action": "Swipe",
+        "timeout": 5000,
+        "begin": [
+            1070,
+            650
+        ],
+        "end": [
+            500,
+            650
+        ]
+        // "end": [
+        //     [
+        //         1145,
+        //         650
+        //     ],
+        //     [
+        //         1125,
+        //         650
+        //     ],
+        //     [
+        //         1105,
+        //         650
+        //     ],
+        //     [
+        //         1085,
+        //         650
+        //     ],
+        //     [
+        //         1065,
+        //         650
+        //     ],
+        //     [
+        //         1045,
+        //         650
+        //     ],
+        //     [
+        //         1025,
+        //         650
+        //     ],
+        //     [
+        //         1005,
+        //         650
+        //     ],
+        //     [
+        //         985,
+        //         650
+        //     ],
+        //     [
+        //         965,
+        //         650
+        //     ],
+        //     [
+        //         945,
+        //         650
+        //     ],
+        //     [
+        //         925,
+        //         650
+        //     ],
+        //     [
+        //         905,
+        //         650
+        //     ],
+        //     [
+        //         885,
+        //         650
+        //     ],
+        //     [
+        //         865,
+        //         650
+        //     ],
+        //     [
+        //         845,
+        //         650
+        //     ],
+        //     [
+        //         825,
+        //         650
+        //     ],
+        //     [
+        //         805,
+        //         650
+        //     ],
+        //     [
+        //         785,
+        //         650
+        //     ],
+        //     [
+        //         765,
+        //         650
+        //     ],
+        //     [
+        //         745,
+        //         650
+        //     ],
+        //     [
+        //         725,
+        //         650
+        //     ],
+        //     [
+        //         705,
+        //         650
+        //     ],
+        //     [
+        //         685,
+        //         650
+        //     ],
+        //     [
+        //         665,
+        //         650
+        //     ],
+        //     [
+        //         645,
+        //         650
+        //     ],
+        //     [
+        //         625,
+        //         650
+        //     ],
+        //     [
+        //         605,
+        //         650
+        //     ],
+        //     [
+        //         585,
+        //         650
+        //     ],
+        //     [
+        //         565,
+        //         650
+        //     ],
+        //     [
+        //         545,
+        //         650
+        //     ],
+        //     [
+        //         525,
+        //         650
+        //     ],
+        //     [
+        //         505,
+        //         650
+        //     ],
+        //     [
+        //         485,
+        //         650
+        //     ],
+        //     [
+        //         465,
+        //         650
+        //     ],
+        //     [
+        //         445,
+        //         650
+        //     ],
+        //     [
+        //         425,
+        //         650
+        //     ],
+        //     [
+        //         405,
+        //         650
+        //     ],
+        //     [
+        //         385,
+        //         650
+        //     ],
+        //     [
+        //         365,
+        //         650
+        //     ],
+        //     [
+        //         345,
+        //         650
+        //     ],
+        //     [
+        //         325,
+        //         650
+        //     ],
+        //     [
+        //         305,
+        //         650
+        //     ],
+        //     [
+        //         285,
+        //         650
+        //     ],
+        //     [
+        //         265,
+        //         650
+        //     ],
+        //     [
+        //         245,
+        //         650
+        //     ],
+        //     [
+        //         225,
+        //         650
+        //     ],
+        //     [
+        //         205,
+        //         650
+        //     ],
+        //     [
+        //         185,
+        //         650
+        //     ],
+        //     [
+        //         165,
+        //         650
+        //     ],
+        //     [
+        //         145,
+        //         650
+        //     ],
+        //     [
+        //         125,
+        //         650
+        //     ],
+        //     [
+        //         105,
+        //         650
+        //     ],
+        //     [
+        //         85,
+        //         650
+        //     ],
+        //     [
+        //         65,
+        //         650
+        //     ],
+        //     [
+        //         45,
+        //         650
+        //     ],
+        //     [
+        //         25,
+        //         650
+        //     ]
+        // ]
+    },
+    "LevelUP_LevelUP_Start_Skip_Award": {
+        "recognition": "OCR",
+        "expected": [
+            "获得物资"
+        ],
+        "action": "Click",
+        "target_offset": [
+            300,
+            0,
+            0,
+            0
+        ],
+        "focus": "[动作] 领取成功，点击屏幕跳过奖励界面"
+    },
+    "LevelUP_Start_Click_Home_Button": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "回到主界面.png"
+        ],
+        "action": "Click",
+        "threshold": [
+            0.95
+        ],
+        "focus": "[动作] 点击回到主界面按钮"
+    },
+    "LevelUP_Start_Click_Comeback_Button": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "返回按键.png"
+        ],
+        "action": "Click",
+        "threshold": [
+            0.95
+        ],
+        "focus": "[动作] 点击返回按键"
+    },
+    "LevelUP_Start_Click_Close_Button": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "关闭图标.png"
+        ],
+        "action": "Click",
+        "threshold": [
+            0.95
+        ],
+        "focus": "[动作] 点击返回按键"
+    },
+    "LevelUP_Start_ComeBack_Home": {
+        "next": [
+            "[JumpBack]LevelUP_Start_Click_Home_Button",
+            "[JumpBack]LevelUP_Start_Click_Comeback_Button",
+            "[JumpBack]LevelUP_Start_Click_Close_Button",
+            "LevelUP_Start_ComeBack_Home_Is_HomePage"
+        ],
+        "focus": "[动作] 尝试回到主界面"
+    },
+    "LevelUP_Start_ComeBack_Home_Is_HomePage": {
+        "recognition": "OCR",
+        "expected": [
+            "(?i)UID"
+        ],
+        "next": [],
+        "focus": "[状态] 已成功返回主界面，任务结束"
+    },
+    "LevelUP_Start_Loading": {
+        "recognition": "OCR",
+        "expected": [
+            "(?i)Load"
+        ],
+        "focus": "[状态] 界面加载中"
+    }
+}
