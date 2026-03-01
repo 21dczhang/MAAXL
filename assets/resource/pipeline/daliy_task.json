@@ -43,21 +43,23 @@
         "post_delay": 500,
         "next": [
             "Daily_Task_Daily_Task_Start_Goto_Daily_Task2"
-        ]
+        ],
+        "focus": null
     },
     "Daily_Task_Daily_Task_Start_Goto_Daily_Task2": {
         "recognition": "OCR",
         "expected": [
             "每日历练"
         ],
-        "action": "Click",
         "roi": [
             26,
             612,
             740,
             86
         ],
-        "post_delay": 3000
+        "action": "Click",
+        "post_delay": 3000,
+        "focus": null
     },
     "Daily_Task_Daily_Task_Start_Claim_Exp": {
         "recognition": "OCR",
@@ -70,12 +72,13 @@
             205,
             423
         ],
-        "post_delay": 1500,
+        "action": "Click",
         "max_hit": 1,
+        "post_delay": 1500,
         "next": [
             "Daily_Task_Daily_Task_Start_Skip_Award"
         ],
-        "action": "Click"
+        "focus": null
     },
     "Daily_Task_Daily_Task_Start_Claim_Award": {
         "recognition": "OCR",
@@ -88,12 +91,13 @@
             213,
             41
         ],
-        "post_delay": 1500,
+        "action": "Click",
         "max_hit": 1,
+        "post_delay": 1500,
         "next": [
             "Daily_Task_Daily_Task_Start_Skip_Award"
         ],
-        "action": "Click"
+        "focus": null
     },
     "Daily_Task_Daily_Task_Start_Skip_Award": {
         "recognition": "OCR",
@@ -114,10 +118,10 @@
         "template": [
             "回到主界面.png"
         ],
-        "action": "Click",
         "threshold": [
             0.95
         ],
+        "action": "Click",
         "post_delay": 1000,
         "focus": "[动作] 点击回到主界面按钮"
     },
@@ -126,10 +130,10 @@
         "template": [
             "返回按键.png"
         ],
-        "action": "Click",
         "threshold": [
             0.95
         ],
+        "action": "Click",
         "post_delay": 1000,
         "focus": "[动作] 点击返回按键"
     },
@@ -138,10 +142,10 @@
         "template": [
             "关闭图标.png"
         ],
-        "action": "Click",
         "threshold": [
             0.95
         ],
+        "action": "Click",
         "post_delay": 1000,
         "focus": "[动作] 点击关闭图标"
     },
@@ -150,10 +154,10 @@
         "template": [
             "返回营地.png"
         ],
-        "action": "Click",
         "threshold": [
             0.95
         ],
+        "action": "Click",
         "post_delay": 1000,
         "focus": "[动作] 点击返回营地按键"
     },

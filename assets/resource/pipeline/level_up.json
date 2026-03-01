@@ -35,8 +35,8 @@
         ],
         "action": "Click",
         "max_hit": 1,
-        "timeout": 5000,
         "post_delay": 1000,
+        "timeout": 5000,
         "focus": "[动作] 点击成员图标进入界面"
     },
     "LevelUP_LevelUP_Start_ChengYuan_Select_Sort_Method": {
@@ -53,11 +53,11 @@
         "threshold": [
             0.99
         ],
-        "enabled": false,
+        "action": "Click",
         "max_hit": 1,
         "timeout": 5000,
-        "action": "Click",
-        "focus": "[动作] 调整成员排序方式"
+        "focus": "[动作] 调整成员排序方式",
+        "enabled": false
     },
     "LevelUP_LevelUP_Start_ChengYuan_Select_Role_Start": {
         "max_hit": 1,
@@ -137,15 +137,16 @@
             58
         ],
         "timeout": 5000,
-        "inverse": true,
         "next": [
             "LevelUP_LevelUP_Start_ChengYuan_Select_Role_inverst_Swip_Once"
         ],
-        "focus": "[状态] 检查当前页面角色是否均不可升级"
+        "focus": "[状态] 检查当前页面角色是否均不可升级",
+        "inverse": true
     },
     "LevelUP_LevelUP_Start_ChengYuan_Select_Role_inverst_Swip_Once": {
         "action": "Swipe",
         "timeout": 5000,
+        "focus": "[动作] 页面滑动翻页",
         "begin": [
             1070,
             650
@@ -153,8 +154,7 @@
         "end": [
             500,
             650
-        ],
-        "focus": "[动作] 页面滑动翻页"
+        ]
     },
     "LevelUP_LevelUP_Start_Skip_Award": {
         "recognition": "OCR",
@@ -175,10 +175,10 @@
         "template": [
             "回到主界面.png"
         ],
-        "action": "Click",
         "threshold": [
             0.95
         ],
+        "action": "Click",
         "post_delay": 1000,
         "focus": "[动作] 点击回到主界面按钮"
     },
@@ -187,10 +187,10 @@
         "template": [
             "返回按键.png"
         ],
-        "action": "Click",
         "threshold": [
             0.95
         ],
+        "action": "Click",
         "post_delay": 1000,
         "focus": "[动作] 点击返回按键"
     },
@@ -199,10 +199,10 @@
         "template": [
             "关闭图标.png"
         ],
-        "action": "Click",
         "threshold": [
             0.95
         ],
+        "action": "Click",
         "post_delay": 1000,
         "focus": "[动作] 点击关闭图标"
     },

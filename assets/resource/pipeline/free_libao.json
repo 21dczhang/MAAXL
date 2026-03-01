@@ -31,10 +31,10 @@
             "集市"
         ],
         "action": "Click",
+        "max_hit": 1,
         "next": [
             "FreeLiBao_FreeLiBao_Start_Goto_JiShi_Complete"
         ],
-        "max_hit": 1,
         "focus": "[动作] 点击进入集市"
     },
     "FreeLiBao_FreeLiBao_Start_Goto_JiShi_Complete": {
@@ -50,13 +50,13 @@
             "博物集市"
         ],
         "action": "Click",
+        "max_hit": 1,
+        "post_delay": 1000,
+        "timeout": 5000,
         "next": [
             "[JumpBack]FreeLiBao_FreeLiBao_Start_Goto_BoWuJiShi_TeHuiShangHang",
             "[JumpBack]FreeLiBao_FreeLiBao_Start_Goto_BoWuJiShi_TanXianMiYue"
         ],
-        "max_hit": 1,
-        "timeout": 5000,
-        "post_delay": 1000,
         "focus": "[动作] 点击进入博物集市"
     },
     "FreeLiBao_FreeLiBao_Start_Goto_BoWuJiShi_TeHuiShangHang": {
@@ -65,11 +65,11 @@
             "特惠商行"
         ],
         "action": "Click",
+        "max_hit": 1,
+        "timeout": 5000,
         "next": [
             "FreeLiBao_FreeLiBao_Start_Goto_BoWuJiShi_TeHuiShangHang_GuGULiBao"
         ],
-        "max_hit": 1,
-        "timeout": 5000,
         "focus": "[动作] 点击进入特惠商行"
     },
     "FreeLiBao_FreeLiBao_Start_Goto_BoWuJiShi_TeHuiShangHang_GuGULiBao": {
@@ -77,18 +77,18 @@
         "expected": [
             "免费"
         ],
-        "action": "Click",
         "roi": [
             251,
             93,
             1018,
             497
         ],
+        "action": "Click",
+        "post_delay": 1000,
+        "timeout": 5000,
         "next": [
             "[JumpBack]FreeLiBao_FreeLiBao_Start_Skip_Award"
         ],
-        "timeout": 5000,
-        "post_delay": 1000,
         "focus": "[动作] 点击领取特惠商行礼包"
     },
     "FreeLiBao_FreeLiBao_Start_Goto_BoWuJiShi_TanXianMiYue": {
@@ -97,13 +97,13 @@
             "探险密约"
         ],
         "action": "Click",
+        "max_hit": 1,
+        "post_delay": 1000,
+        "timeout": 5000,
         "next": [
             "[JumpBack]FreeLiBao_FreeLiBao_Start_Goto_BoWuJiShi_HeiShiMiYue",
             "[JumpBack]FreeLiBao_FreeLiBao_Start_Goto_BoWuJiShi_ShanLingMiYue"
         ],
-        "max_hit": 1,
-        "timeout": 5000,
-        "post_delay": 1000,
         "focus": "[动作] 点击进入探险密约"
     },
     "FreeLiBao_FreeLiBao_Start_Goto_BoWuJiShi_HeiShiMiYue": {
@@ -112,11 +112,11 @@
             "黑市密约"
         ],
         "action": "Click",
+        "max_hit": 1,
+        "timeout": 5000,
         "next": [
             "FreeLiBao_FreeLiBao_Start_Goto_BoWuJiShi_HeiShiMiYue_YiJianLingQu"
         ],
-        "max_hit": 1,
-        "timeout": 5000,
         "focus": "[动作] 点击进入黑市密约"
     },
     "FreeLiBao_FreeLiBao_Start_Goto_BoWuJiShi_HeiShiMiYue_YiJianLingQu": {
@@ -125,11 +125,11 @@
             "一键领取"
         ],
         "action": "Click",
+        "post_delay": 1000,
+        "timeout": 5000,
         "next": [
             "FreeLiBao_FreeLiBao_Start_Skip_Award"
         ],
-        "timeout": 5000,
-        "post_delay": 1000,
         "focus": "[动作] 点击一键领取黑市奖励"
     },
     "FreeLiBao_FreeLiBao_Start_Goto_BoWuJiShi_ShanLingMiYue": {
@@ -138,11 +138,11 @@
             "山岭密约"
         ],
         "action": "Click",
+        "max_hit": 1,
+        "timeout": 5000,
         "next": [
             "FreeLiBao_FreeLiBao_Start_Goto_BoWuJiShi_ShanLingMiYue_YiJianLingQu"
         ],
-        "max_hit": 1,
-        "timeout": 5000,
         "focus": "[动作] 点击进入山岭密约"
     },
     "FreeLiBao_FreeLiBao_Start_Goto_BoWuJiShi_ShanLingMiYue_YiJianLingQu": {
@@ -151,11 +151,11 @@
             "一键领取"
         ],
         "action": "Click",
+        "post_delay": 1000,
+        "timeout": 5000,
         "next": [
             "FreeLiBao_FreeLiBao_Start_Skip_Award"
         ],
-        "timeout": 5000,
-        "post_delay": 1000,
         "focus": "[动作] 点击一键领取山岭奖励"
     },
     "FreeLiBao_FreeLiBao_Start_Skip_Award": {
@@ -177,10 +177,10 @@
         "template": [
             "回到主界面.png"
         ],
-        "action": "Click",
         "threshold": [
             0.95
         ],
+        "action": "Click",
         "post_delay": 1000,
         "focus": "[动作] 点击回到主界面按钮"
     },
@@ -189,10 +189,10 @@
         "template": [
             "返回按键.png"
         ],
-        "action": "Click",
         "threshold": [
             0.95
         ],
+        "action": "Click",
         "post_delay": 1000,
         "focus": "[动作] 点击返回按键"
     },

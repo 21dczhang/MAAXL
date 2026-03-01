@@ -5,10 +5,10 @@
             "[JumpBack]StartGame_Start_ChuShiHua",
             "StartGame_Start_Click_Start"
         ],
+        "focus": "[动作] 启动游戏应用",
         "pre_wait_freezes": 500,
         "package": "cn.haoplay.game.and.elpis",
-        "doc": "启动游戏",
-        "focus": "[动作] 启动游戏应用"
+        "doc": "启动游戏"
     },
     "StartGame_Start_ChuShiHua": {
         "recognition": "OCR",
@@ -23,13 +23,13 @@
             "(?i)start"
         ],
         "action": "Click",
+        "post_delay": 1000,
         "next": [
             "[JumpBack]StartGame_Start_Is_HomePage",
             "StartGame_Start_Click_Start",
             "StartGame_Start_Close_Notice",
             "StartGame_Start_Skip_HuiGui"
         ],
-        "post_delay": 1000,
         "focus": "[动作] 点击开始游戏按钮"
     },
     "StartGame_Start_Close_Notice": {
@@ -38,12 +38,12 @@
             "关闭图标.png"
         ],
         "action": "Click",
+        "post_delay": 1000,
         "next": [
             "[JumpBack]StartGame_Start_Is_HomePage",
             "StartGame_Start_Skip_HuiGui",
             "StartGame_Start_Is_HomePage"
         ],
-        "post_delay": 1000,
         "focus": "[动作] 点击关闭弹窗公告"
     },
     "StartGame_Start_Skip_HuiGui": {
@@ -58,11 +58,11 @@
             0,
             0
         ],
+        "post_delay": 1000,
         "next": [
             "[JumpBack]StartGame_Start_Is_HomePage",
             "StartGame_Start_Is_HomePage"
         ],
-        "post_delay": 1000,
         "focus": "[动作] 跳过回归活动"
     },
     "StartGame_Start_Is_HomePage": {

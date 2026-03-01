@@ -48,10 +48,10 @@
         "template": [
             "回到主界面.png"
         ],
-        "action": "Click",
         "threshold": [
             0.95
         ],
+        "action": "Click",
         "post_delay": 1000,
         "focus": "[动作] 点击回到主界面按钮"
     },
@@ -60,10 +60,10 @@
         "template": [
             "返回按键.png"
         ],
-        "action": "Click",
         "threshold": [
             0.95
         ],
+        "action": "Click",
         "post_delay": 1000,
         "focus": "[动作] 点击返回按键"
     },
@@ -72,10 +72,10 @@
         "template": [
             "关闭图标.png"
         ],
-        "action": "Click",
         "threshold": [
             0.95
         ],
+        "action": "Click",
         "post_delay": 1000,
         "focus": "[动作] 点击关闭图标"
     },
@@ -84,10 +84,10 @@
         "template": [
             "返回营地.png"
         ],
-        "action": "Click",
         "threshold": [
             0.95
         ],
+        "action": "Click",
         "post_delay": 1000,
         "focus": "[动作] 点击返回营地按键"
     },
