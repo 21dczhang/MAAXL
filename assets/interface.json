@@ -54,8 +54,14 @@
             "description": "领取免费礼包"
         },
         {
+            "name": "日程表一键收取",
+            "entry": "RiChengBiao_Start",
+            "default_check": true,
+            "description": "日程表一键收取"
+        },
+        {
             "name": "测试任务",
-            "entry": "FreeLiBao_FreeLiBao_Start"
+            "entry": "RiChengBiao_RiChengBiao_Start_RiChengBiao_Dont_Double_Check"
         }
     ],
     "option": {}

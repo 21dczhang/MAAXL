@@ -1,0 +1,144 @@
+{
+    "RiChengBiao_Start": {
+        "next": [
+            "[JumpBack]RiChengBiao_Start_Loading",
+            "[JumpBack]RiChengBiao_Start_Click_Home_Button",
+            "[JumpBack]RiChengBiao_Start_Click_Comeback_Button",
+            "[JumpBack]RiChengBiao_Start_Click_Close_Button",
+            "RiChengBiao_Start_Is_HomePage"
+        ],
+        "focus": "[动作] 开始任务：日程表一键领取"
+    },
+    "RiChengBiao_Start_Is_HomePage": {
+        "recognition": "OCR",
+        "expected": [
+            "(?i)UID"
+        ],
+        "next": [
+            "RiChengBiao_RiChengBiao_Start"
+        ],
+        "focus": "[状态] 已回到主界面"
+    },
+    "RiChengBiao_RiChengBiao_Start": {
+        "next": [
+            "[JumpBack]RiChengBiao_RiChengBiao_Start_Goto_RiChengBiao",
+            "[JumpBack]RiChengBiao_RiChengBiao_Start_RiChengBiao_Dont_Double_Check",
+            "[JumpBack]RiChengBiao_RiChengBiao_Start_RiChengBiao_YiJianLingQu_Start",
+            //这里添加任务，注意max_hit 要设置为1
+            "RiChengBiao_Start_ComeBack_Home"
+        ],
+        "focus": "[路径] 分配任务：前往集市或博物集市"
+    },
+    "RiChengBiao_RiChengBiao_Start_Goto_RiChengBiao": {
+        "recognition": "OCR",
+        "expected": [
+            "日程表"
+        ],
+        "action": "Click",
+        "post_delay": 1000,
+        "max_hit": 1
+    },
+    "RiChengBiao_RiChengBiao_Start_RiChengBiao_Dont_Double_Check": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            1062,
+            618,
+            161,
+            46
+        ],
+        "template": [
+            "日程表-不再二次确认.png"
+        ],
+        "action": "Click",
+        "threshold": [
+            0.99
+        ],
+        "max_hit": 1
+    },
+    "RiChengBiao_RiChengBiao_Start_RiChengBiao_YiJianLingQu_Start": {
+        "next": [
+            "[JumpBack]RiChengBiao_RiChengBiao_Start_RiChengBiao_YiJianLingQu",
+            "[JumpBack]FreeLiBao_FreeLiBao_Start_Skip_Award"
+        ],
+        "max_hit": 1,
+        "timeout": 5000
+    },
+    "RiChengBiao_RiChengBiao_Start_RiChengBiao_YiJianLingQu": {
+        "recognition": "OCR",
+        "expected": [
+            "一键收取"
+        ],
+        "action": "Click"
+    },
+    "RiChengBiao_RiChengBiao_Start_Skip_Award": {
+        "recognition": "OCR",
+        "expected": [
+            "获得物资"
+        ],
+        "action": "Click",
+        "target_offset": [
+            300,
+            0,
+            0,
+            0
+        ],
+        "focus": "[动作] 领取成功，点击屏幕跳过奖励界面"
+    },
+    "RiChengBiao_Start_Click_Home_Button": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "回到主界面.png"
+        ],
+        "action": "Click",
+        "threshold": [
+            0.95
+        ],
+        "focus": "[动作] 点击回到主界面按钮"
+    },
+    "RiChengBiao_Start_Click_Comeback_Button": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "返回按键.png"
+        ],
+        "action": "Click",
+        "threshold": [
+            0.95
+        ],
+        "focus": "[动作] 点击返回按键"
+    },
+    "RiChengBiao_Start_Click_Close_Button": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "关闭图标.png"
+        ],
+        "action": "Click",
+        "threshold": [
+            0.95
+        ],
+        "focus": "[动作] 点击返回按键"
+    },
+    "RiChengBiao_Start_ComeBack_Home": {
+        "next": [
+            "[JumpBack]RiChengBiao_Start_Click_Home_Button",
+            "[JumpBack]RiChengBiao_Start_Click_Comeback_Button",
+            "[JumpBack]RiChengBiao_Start_Click_Close_Button",
+            "RiChengBiao_Start_ComeBack_Home_Is_HomePage"
+        ],
+        "focus": "[动作] 尝试回到主界面"
+    },
+    "RiChengBiao_Start_ComeBack_Home_Is_HomePage": {
+        "recognition": "OCR",
+        "expected": [
+            "(?i)UID"
+        ],
+        "next": [],
+        "focus": "[状态] 已成功返回主界面，任务结束"
+    },
+    "RiChengBiao_Start_Loading": {
+        "recognition": "OCR",
+        "expected": [
+            "(?i)Load"
+        ],
+        "focus": "[状态] 界面加载中"
+    }
+}

@@ -3,6 +3,8 @@
         "next": [
             "[JumpBack]Template2_Start_Loading",
             "[JumpBack]Template2_Start_Click_Home_Button",
+            "[JumpBack]Template2_Start_Click_Comeback_Button",
+            "[JumpBack]Template2_Start_Click_Close_Button",
             "Template2_Start_Is_HomePage"
         ],
         "focus": "[动作] 开始任务：领取免费礼包"
@@ -62,10 +64,22 @@
         ],
         "focus": "[动作] 点击返回按键"
     },
+    "Template2_Start_Click_Close_Button": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "关闭图标.png"
+        ],
+        "action": "Click",
+        "threshold": [
+            0.95
+        ],
+        "focus": "[动作] 点击返回按键"
+    },
     "Template2_Start_ComeBack_Home": {
         "next": [
             "[JumpBack]Template2_Start_Click_Home_Button",
             "[JumpBack]Template2_Start_Click_Comeback_Button",
+            "[JumpBack]Template2_Start_Click_Close_Button",
             "Template2_Start_ComeBack_Home_Is_HomePage"
         ],
         "focus": "[动作] 尝试回到主界面"
