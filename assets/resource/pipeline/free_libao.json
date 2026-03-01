@@ -1,0 +1,220 @@
+{
+    "FreeLiBao_Start": {
+        "next": [
+            "[JumpBack]FreeLiBao_Start_Loading",
+            "[JumpBack]FreeLiBao_Start_Click_Home_Button",
+            "FreeLiBao_Start_Is_HomePage"
+        ],
+        "focus": "[动作] 开始任务：领取免费礼包"
+    },
+    "FreeLiBao_Start_Is_HomePage": {
+        "recognition": "OCR",
+        "expected": [
+            "(?i)UID"
+        ],
+        "next": [
+            "FreeLiBao_FreeLiBao_Start"
+        ],
+        "focus": "[状态] 已回到主界面"
+    },
+    "FreeLiBao_FreeLiBao_Start": {
+        "next": [
+            "[JumpBack]FreeLiBao_FreeLiBao_Start_Goto_JiShi",
+            "[JumpBack]FreeLiBao_FreeLiBao_Start_Goto_BoWuJiShi",
+            "FreeLiBao_Start_ComeBack_Home"
+        ],
+        "focus": "[路径] 分配任务：前往集市或博物集市"
+    },
+    "FreeLiBao_FreeLiBao_Start_Goto_JiShi": {
+        "recognition": "OCR",
+        "expected": [
+            "集市"
+        ],
+        "action": "Click",
+        "next": [
+            "FreeLiBao_FreeLiBao_Start_Goto_JiShi_Complete"
+        ],
+        "max_hit": 1,
+        "focus": "[动作] 点击进入集市"
+    },
+    "FreeLiBao_FreeLiBao_Start_Goto_JiShi_Complete": {
+        "recognition": "OCR",
+        "expected": [
+            "推荐"
+        ],
+        "focus": "[状态] 已进入集市界面"
+    },
+    "FreeLiBao_FreeLiBao_Start_Goto_BoWuJiShi": {
+        "recognition": "OCR",
+        "expected": [
+            "博物集市"
+        ],
+        "action": "Click",
+        "next": [
+            "[JumpBack]FreeLiBao_FreeLiBao_Start_Goto_BoWuJiShi_TeHuiShangHang",
+            "[JumpBack]FreeLiBao_FreeLiBao_Start_Goto_BoWuJiShi_TanXianMiYue"
+        ],
+        "max_hit": 1,
+        "timeout": 5000,
+        "post_delay": 1000,
+        "focus": "[动作] 点击进入博物集市"
+    },
+    "FreeLiBao_FreeLiBao_Start_Goto_BoWuJiShi_TeHuiShangHang": {
+        "recognition": "OCR",
+        "expected": [
+            "特惠商行"
+        ],
+        "action": "Click",
+        "next": [
+            "FreeLiBao_FreeLiBao_Start_Goto_BoWuJiShi_TeHuiShangHang_GuGULiBao"
+        ],
+        "max_hit": 1,
+        "timeout": 5000,
+        "focus": "[动作] 点击进入特惠商行"
+    },
+    "FreeLiBao_FreeLiBao_Start_Goto_BoWuJiShi_TeHuiShangHang_GuGULiBao": {
+        "recognition": "OCR",
+        "expected": [
+            "免费"
+        ],
+        "action": "Click",
+        "roi": [
+            251,
+            93,
+            1018,
+            497
+        ],
+        "next": [
+            "[JumpBack]FreeLiBao_FreeLiBao_Start_Skip_Award"
+        ],
+        "timeout": 5000,
+        "post_delay": 1000,
+        "focus": "[动作] 点击领取特惠商行礼包"
+    },
+    "FreeLiBao_FreeLiBao_Start_Goto_BoWuJiShi_TanXianMiYue": {
+        "recognition": "OCR",
+        "expected": [
+            "探险密约"
+        ],
+        "action": "Click",
+        "next": [
+            "[JumpBack]FreeLiBao_FreeLiBao_Start_Goto_BoWuJiShi_HeiShiMiYue",
+            "[JumpBack]FreeLiBao_FreeLiBao_Start_Goto_BoWuJiShi_ShanLingMiYue"
+        ],
+        "max_hit": 1,
+        "timeout": 5000,
+        "post_delay": 1000,
+        "focus": "[动作] 点击进入探险密约"
+    },
+    "FreeLiBao_FreeLiBao_Start_Goto_BoWuJiShi_HeiShiMiYue": {
+        "recognition": "OCR",
+        "expected": [
+            "黑市密约"
+        ],
+        "action": "Click",
+        "next": [
+            "FreeLiBao_FreeLiBao_Start_Goto_BoWuJiShi_HeiShiMiYue_YiJianLingQu"
+        ],
+        "max_hit": 1,
+        "timeout": 5000,
+        "focus": "[动作] 点击进入黑市密约"
+    },
+    "FreeLiBao_FreeLiBao_Start_Goto_BoWuJiShi_HeiShiMiYue_YiJianLingQu": {
+        "recognition": "OCR",
+        "expected": [
+            "一键领取"
+        ],
+        "action": "Click",
+        "next": [
+            "FreeLiBao_FreeLiBao_Start_Skip_Award"
+        ],
+        "timeout": 5000,
+        "post_delay": 1000,
+        "focus": "[动作] 点击一键领取黑市奖励"
+    },
+    "FreeLiBao_FreeLiBao_Start_Goto_BoWuJiShi_ShanLingMiYue": {
+        "recognition": "OCR",
+        "expected": [
+            "山岭密约"
+        ],
+        "action": "Click",
+        "next": [
+            "FreeLiBao_FreeLiBao_Start_Goto_BoWuJiShi_ShanLingMiYue_YiJianLingQu"
+        ],
+        "max_hit": 1,
+        "timeout": 5000,
+        "focus": "[动作] 点击进入山岭密约"
+    },
+    "FreeLiBao_FreeLiBao_Start_Goto_BoWuJiShi_ShanLingMiYue_YiJianLingQu": {
+        "recognition": "OCR",
+        "expected": [
+            "一键领取"
+        ],
+        "action": "Click",
+        "next": [
+            "FreeLiBao_FreeLiBao_Start_Skip_Award"
+        ],
+        "timeout": 5000,
+        "post_delay": 1000,
+        "focus": "[动作] 点击一键领取山岭奖励"
+    },
+    "FreeLiBao_FreeLiBao_Start_Skip_Award": {
+        "recognition": "OCR",
+        "expected": [
+            "获得物资"
+        ],
+        "action": "Click",
+        "target_offset": [
+            300,
+            0,
+            0,
+            0
+        ],
+        "focus": "[动作] 领取成功，点击屏幕跳过奖励界面"
+    },
+    "FreeLiBao_Start_Click_Home_Button": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "回到主界面.png"
+        ],
+        "action": "Click",
+        "threshold": [
+            0.95
+        ],
+        "focus": "[动作] 点击回到主界面按钮"
+    },
+    "FreeLiBao_Start_Click_Comeback_Button": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "返回按键.png"
+        ],
+        "action": "Click",
+        "threshold": [
+            0.95
+        ],
+        "focus": "[动作] 点击返回按键"
+    },
+    "FreeLiBao_Start_ComeBack_Home": {
+        "next": [
+            "[JumpBack]FreeLiBao_Start_Click_Home_Button",
+            "[JumpBack]FreeLiBao_Start_Click_Comeback_Button",
+            "FreeLiBao_Start_ComeBack_Home_Is_HomePage"
+        ],
+        "focus": "[动作] 尝试回到主界面"
+    },
+    "FreeLiBao_Start_ComeBack_Home_Is_HomePage": {
+        "recognition": "OCR",
+        "expected": [
+            "(?i)UID"
+        ],
+        "next": [],
+        "focus": "[状态] 已成功返回主界面，任务结束"
+    },
+    "FreeLiBao_Start_Loading": {
+        "recognition": "OCR",
+        "expected": [
+            "(?i)Load"
+        ],
+        "focus": "[状态] 界面加载中"
+    }
+}
