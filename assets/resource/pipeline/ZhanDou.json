@@ -8,7 +8,7 @@
             "[JumpBack]ZhanDou_Start_Click_FanHuiYingDi_Button",
             "ZhanDou_Start_Is_HomePage"
         ],
-        "focus": "[动作] 开始任务：领取免费礼包"
+        "focus": "[动作] 开始任务：执行战斗/物资补给"
     },
     "ZhanDou_Start_Is_HomePage": {
         "recognition": "OCR",
@@ -27,7 +27,7 @@
             //这里添加任务，注意max_hit 要设置为1
             "ZhanDou_Start_ComeBack_Home"
         ],
-        "focus": "[路径] 分配任务：前往集市或博物集市"
+        "focus": "[路径] 分配任务：前往战斗页面"
     },
     "ZhanDou_ZhanDou_Start_Goto_ZhanDou": {
         "recognition": "DirectHit",
@@ -39,10 +39,11 @@
             16
         ],
         "max_hit": 1,
+        "post_delay": 1000,
         "next": [
             "ZhanDou_ZhanDou_Start_Goto_ZhanDou2"
         ],
-        "post_delay": 1000
+        "focus": "[动作] 点击进入战斗入口"
     },
     "ZhanDou_ZhanDou_Start_Goto_ZhanDou2": {
         "recognition": "OCR",
@@ -57,10 +58,11 @@
         ],
         "action": "Click",
         "max_hit": 1,
+        "post_delay": 1000,
         "next": [
             "ZhanDou_ZhanDou_Start_Goto_ZhanDou3"
         ],
-        "post_delay": 1000
+        "focus": "[动作] 点击物资补给"
     },
     "ZhanDou_ZhanDou_Start_Goto_ZhanDou3": {
         "recognition": "DirectHit",
@@ -71,11 +73,13 @@
             32,
             12
         ],
-        "post_delay": 1000
+        "post_delay": 1000,
+        "focus": "[动作] 点击具体关卡或确认"
     },
     "ZhanDou_ZhanDou_Start_ZhanDou_Select_CeLue": {
+        "max_hit": 1,
         "next": [],
-        "max_hit": 1
+        "focus": "[路径] 策略选择分支"
     },
     "ZhanDou_ZhanDou_Start_ZhanDou_Select_JingBi": {
         "recognition": "OCR",
@@ -87,7 +91,8 @@
         "next": [
             "ZhanDou_ZhanDou_Start_ZhanDou_Select_JingBi",
             "ZhanDou_ZhanDou_Start_ZhanDou_Select_JingBi_Lv"
-        ]
+        ],
+        "focus": "[动作] 选择货币试炼"
     },
     "ZhanDou_ZhanDou_Start_ZhanDou_Select_JingBi_Lv": {
         "recognition": "OCR",
@@ -99,7 +104,8 @@
         "action": "Click",
         "next": [
             "ZhanDou_ZhanDou_Start_ZhanDou_Click_PaiQian"
-        ]
+        ],
+        "focus": "[动作] 选择货币试炼等级"
     },
     "ZhanDou_ZhanDou_Start_ZhanDou_Select_JingYan": {
         "recognition": "OCR",
@@ -111,7 +117,8 @@
         "next": [
             "ZhanDou_ZhanDou_Start_ZhanDou_Select_JingYan",
             "ZhanDou_ZhanDou_Start_ZhanDou_Select_JingYan_Lv"
-        ]
+        ],
+        "focus": "[动作] 选择战术演练"
     },
     "ZhanDou_ZhanDou_Start_ZhanDou_Select_JingYan_Lv": {
         "recognition": "OCR",
@@ -121,10 +128,11 @@
         ],
         "order_by": "Expected",
         "action": "Click",
+        "post_delay": 500,
         "next": [
             "ZhanDou_ZhanDou_Start_ZhanDou_Click_PaiQian"
         ],
-        "post_delay": 500
+        "focus": "[动作] 选择战术演练等级"
     },
     "ZhanDou_ZhanDou_Start_ZhanDou_Select_JiNeng": {
         "recognition": "OCR",
@@ -136,7 +144,8 @@
         "next": [
             "ZhanDou_ZhanDou_Start_ZhanDou_Select_JiNeng",
             "ZhanDou_ZhanDou_Start_ZhanDou_Select_JiNeng_Lv"
-        ]
+        ],
+        "focus": "[动作] 选择技能修行"
     },
     "ZhanDou_ZhanDou_Start_ZhanDou_Select_JiNeng_Lv": {
         "recognition": "OCR",
@@ -146,10 +155,11 @@
         ],
         "order_by": "Expected",
         "action": "Click",
+        "post_delay": 500,
         "next": [
             "ZhanDou_ZhanDou_Start_ZhanDou_Click_PaiQian"
         ],
-        "post_delay": 500
+        "focus": "[动作] 选择技能修行等级"
     },
     "ZhanDou_ZhanDou_Start_ZhanDou_Click_PaiQian": {
         "recognition": "OCR",
@@ -160,7 +170,8 @@
         "post_delay": 800,
         "next": [
             "ZhanDou_ZhanDou_Start_ZhanDou_Click_PaiQian2"
-        ]
+        ],
+        "focus": "[动作] 点击派遣按钮"
     },
     "ZhanDou_ZhanDou_Start_ZhanDou_Click_PaiQian2": {
         "recognition": "OCR",
@@ -179,7 +190,7 @@
             "ZhanDou_ZhanDou_Start_ZhanDou_Click_PaiQian2",
             "ZhanDou_ZhanDou_Start_ZhanDou_NO_Enought_AP"
         ],
-        "focus": "直接点击5次派遣"
+        "focus": "[动作] 循环执行派遣任务"
     },
     "ZhanDou_ZhanDou_Start_ZhanDou_NO_Enought_AP": {
         "recognition": "OCR",
@@ -187,7 +198,8 @@
             "完全恢复",
             "下次恢复"
         ],
-        "next": []
+        "next": [],
+        "focus": "[状态] 体力不足或已达到上限"
     },
     "ZhanDou_ZhanDou_Start_Skip_Award": {
         "recognition": "OCR",
@@ -201,7 +213,7 @@
             0,
             0
         ],
-        "focus": "[动作] 领取成功，点击屏幕跳过奖励界面"
+        "focus": "[动作] 领取成功，跳过奖励界面"
     },
     "ZhanDou_Start_Click_Home_Button": {
         "recognition": "TemplateMatch",
