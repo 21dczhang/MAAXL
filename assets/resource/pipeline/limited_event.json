@@ -1,0 +1,548 @@
+{
+    "Limited_Event_Start": {
+        "next": [
+            "[JumpBack]Limited_Event_Start_Loading",
+            "[JumpBack]Limited_Event_Start_Click_Home_Button",
+            "[JumpBack]Limited_Event_Start_Click_Comeback_Button",
+            "[JumpBack]Limited_Event_Start_Click_Close_Button",
+            "[JumpBack]Limited_Event_Start_Click_FanHuiYingDi_Button",
+            "Limited_Event_Start_Is_HomePage"
+        ],
+        "focus": "[动作] 开始任务：领取免费礼包"
+    },
+    "Limited_Event_Start_Is_HomePage": {
+        "recognition": "OCR",
+        "expected": [
+            "(?i)UID"
+        ],
+        "next": [
+            "Limited_Event_Limited_Event_Start"
+        ],
+        "focus": "[状态] 已回到主界面"
+    },
+    "Limited_Event_Limited_Event_Start": {
+        "next": [
+            "[JumpBack]Limited_Event_Limited_Event_Start_Goto_Limited_Event",
+            "[JumpBack]Limited_Event_Limited_Event_Start_QianDao",
+            "[JumpBack]Limited_Event_Limited_Event_Start_MoWuQingJiao",
+            "[JumpBack]Limited_Event_Limited_Event_Start_XiaoYouXi_Start",
+            "[JumpBack]Limited_Event_Limited_Event_Start_TongXingZheng",
+            "[JumpBack]Limited_Event_Limited_Event_Start_ChengJiuJiangLi",
+            // "[JumpBack]Limited_Event_Limited_Event_Start_Goto_BoWuJiShi",
+            //这里添加任务，注意max_hit 要设置为1
+            "Limited_Event_Start_ComeBack_Home"
+        ],
+        "focus": "[路径] 分配任务：前往集市或博物集市"
+    },
+    "Limited_Event_Limited_Event_Start_TongXingZheng": {
+        "max_hit": 1,
+        "recognition": "OCR",
+        "expected": [
+            "黎明" //活动新通行证名称需要在这里修改
+        ],
+        "action": "Click",
+        "next": [
+            "[JumpBack]Limited_Event_Limited_Event_Start_TongXingZheng_Claim_EXP",
+            "[JumpBack]Limited_Event_Limited_Event_Start_TongXingZheng_Claim_Award",
+            // "[JumpBack]PingZheng_PingZheng_Start_Goto_BoWuJiShi",
+            "Limited_Event_Start_ComeBack_Limited_Home"
+        ],
+        "post_delay": 2000
+    },
+    "Limited_Event_Limited_Event_Start_TongXingZheng_Claim_EXP": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "凭证-经验.png"
+        ],
+        "threshold": [
+            0.9
+        ],
+        "max_hit": 1,
+        "post_delay": 1500,
+        "action": "Click",
+        "next": [
+            "Limited_Event_Limited_Event_Start_TongXingZheng_Claim_EXP2"
+        ],
+        "focus": "[动作] 点击凭证经验领取"
+    },
+    "Limited_Event_Limited_Event_Start_TongXingZheng_Claim_EXP2": {
+        "recognition": "OCR",
+        "expected": [
+            "提交"
+        ],
+        "action": "Click",
+        "post_delay": 1500,
+        "timeout": 3000,
+        "next": [
+            "Limited_Event_Limited_Event_Start_Skip_Award2"
+        ],
+        "focus": "[动作] 提交经验凭证"
+    },
+    "Limited_Event_Limited_Event_Start_TongXingZheng_Claim_Award": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "凭证-奖励.png"
+        ],
+        "threshold": [
+            0.9
+        ],
+        "max_hit": 1,
+        "post_delay": 1500,
+        "timeout": 3000,
+        "action": "Click",
+        "next": [
+            "Limited_Event_Limited_Event_Start_TongXingZheng_Claim_Award2"
+        ],
+        "focus": "[动作] 点击凭证奖励领取"
+    },
+    "Limited_Event_Limited_Event_Start_TongXingZheng_Claim_Award2": {
+        "recognition": "OCR",
+        "expected": [
+            "领取"
+        ],
+        "action": "Click",
+        "post_delay": 1500,
+        "next": [
+            "PingZheng_PingZheng_Start_Skip_Award"
+        ],
+        "timeout": 3000,
+        "focus": "[动作] 确认领取奖励"
+    },
+    "Limited_Event_Limited_Event_Start_ChengJiuJiangLi": {
+        "recognition": "OCR",
+        "max_hit": 1,
+        "expected": [
+            "活动委托"
+        ],
+        "action": "Click",
+        "next": [
+            "[JumpBack]Limited_Event_Limited_Event_Start_ChengJiuJiangLi_YiJianLingQu",
+            "Limited_Event_Start_ComeBack_Limited_Home"
+        ],
+        "timeout": 3000,
+        "post_delay": 1500
+    },
+    "Limited_Event_Limited_Event_Start_ChengJiuJiangLi_YiJianLingQu": {
+        "recognition": "OCR",
+        "action": "Click",
+        "expected": [
+            "领取"
+        ],
+        "roi": [
+            153,
+            548,
+            232,
+            72
+        ],
+        "next": [
+            "Limited_Event_Limited_Event_Start_Skip_Award"
+        ],
+        "timeout": 3000
+    },
+    "Limited_Event_Limited_Event_Start_Goto_Limited_Event": {
+        "max_hit": 1,
+        "recognition": "OCR",
+        "expected": [
+            "剩余"
+        ],
+        "roi": [
+            155,
+            615,
+            226,
+            82
+        ],
+        "action": "Click",
+        "post_delay": 4000
+    },
+    "Limited_Event_Limited_Event_Start_QianDao": {
+        "recognition": "OCR",
+        "max_hit": 1,
+        "expected": [
+            "签到"
+        ],
+        "action": "Click",
+        "next": [
+            "[JumpBack]Limited_Event_Limited_Event_Start_QianDao_LingQu",
+            "Limited_Event_Limited_Event_Start_QianDao_ComeBack"
+        ],
+        "post_delay": 1500
+    },
+    "Limited_Event_Limited_Event_Start_XiaoYouXi_Start": {
+        "recognition": "OCR",
+        "max_hit": 1,
+        "expected": [
+            "迷城撤离" //后续小游戏名称更新，需要在这里修改
+        ],
+        "action": "Click",
+        "next": [
+            "[JumpBack]Limited_Event_Limited_Event_Start_XiaoYouXi_Twice_Start",
+            "[JumpBack]Limited_Event_Limited_Event_Start_XiaoYouXi_Daily_Award",
+            "Limited_Event_Start_ComeBack_Limited_Home"
+        ],
+        "post_delay": 1500
+    },
+    "Limited_Event_Limited_Event_Start_XiaoYouXi_Twice_Start": {
+        "recognition": "OCR",
+        "action": "Click",
+        "expected": [
+            "开始"
+        ],
+        "next": [
+            "Limited_Event_Limited_Event_Start_XiaoYouXi_Twice_Start_Cancel"
+        ],
+        "post_delay": 1000,
+        "max_hit": 2
+    },
+    "Limited_Event_Limited_Event_Start_XiaoYouXi_Twice_Start_Cancel": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "返回按键.png"
+        ],
+        "action": "Click",
+        "next": [
+            "Limited_Event_Limited_Event_Start_XiaoYouXi_Twice_Start_Cancel_Confirm",
+            "Limited_Event_Limited_Event_Start_XiaoYouXi_Twice_Start_Cancel"
+        ]
+    },
+    "Limited_Event_Limited_Event_Start_XiaoYouXi_Twice_Start_Cancel_Confirm": {
+        "recognition": "OCR",
+        "expected": [
+            "确定",
+            "结束"
+        ],
+        "action": "Click",
+        "next": [
+            "Limited_Event_Limited_Event_Start_XiaoYouXi_Twice_Start"
+        ],
+        "timeout": 3000,
+        "post_delay": 1500
+    },
+    "Limited_Event_Limited_Event_Start_XiaoYouXi_Daily_Award": {
+        "max_hit": 1,
+        "recognition": "OCR",
+        "expected": [
+            "每日参与"
+        ],
+        "action": "Click",
+        "post_delay": 500,
+        "next": [
+            "Limited_Event_Limited_Event_Start_Skip_Award"
+        ],
+        "timeout": 2500
+    },
+    "Limited_Event_Limited_Event_Start_QianDao_LingQu": {
+        "max_hit": 1,
+        "recognition": "OCR",
+        "expected": [
+            "领取"
+        ],
+        "timeout": 4000,
+        "next": [
+            "Limited_Event_Limited_Event_Start_Skip_Award"
+        ],
+        "action": "Click"
+    },
+    "Limited_Event_Limited_Event_Start_QianDao_ComeBack": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "返回按键.png"
+        ],
+        "action": "Click",
+        "post_delay": 500
+    },
+    "Limited_Event_Limited_Event_Start_MoWuQingJiao": {
+        "recognition": "OCR",
+        "expected": [
+            "魔物"
+        ],
+        "max_hit": 1,
+        "action": "Click",
+        "next": [
+            "Limited_Event_Limited_Event_Start_MoWuQingJiao_CeLue"
+        ]
+    },
+    "Limited_Event_Limited_Event_Start_MoWuQingJiao_CeLue": {
+        "next": []
+    },
+    "Limited_Event_Limited_Event_Start_MoWuQingJiao_WuZiCaiJi": {
+        "recognition": "OCR",
+        "expected": [
+            "物资采集"
+        ],
+        "action": "Click",
+        "next": [
+            "[JumpBack]Limited_Event_Limited_Event_Start_MoWuQingJiao_PaiQian",
+            "[JumpBack]Limited_Event_Limited_Event_Start_MoWuQingJiao_First_Fight",
+            "Limited_Event_Start_ComeBack_Limited_Home"
+        ],
+        "timeout": 5000,
+        "post_delay": 1000,
+    },
+    "Limited_Event_Limited_Event_Start_MoWuQingJiao_QingBaoSouJi": {
+        "recognition": "OCR",
+        "expected": [
+            "情报搜集"
+        ],
+        "action": "Click",
+        "next": [
+            "[JumpBack]Limited_Event_Limited_Event_Start_MoWuQingJiao_PaiQian",
+            "[JumpBack]Limited_Event_Limited_Event_Start_MoWuQingJiao_First_Fight",
+            "Limited_Event_Start_ComeBack_Limited_Home"
+        ],
+        "timeout": 5000,
+        "post_delay": 1000
+    },
+    "Limited_Event_Limited_Event_Start_MoWuQingJiao_ZhanDouYanLian": {
+        "recognition": "OCR",
+        "timeout": 5000,
+        "post_delay": 1000,
+        "expected": [
+            "战斗演习"
+        ],
+        "action": "Click",
+        "next": [
+            "[JumpBack]Limited_Event_Limited_Event_Start_MoWuQingJiao_PaiQian",
+            "[JumpBack]Limited_Event_Limited_Event_Start_MoWuQingJiao_First_Fight",
+            "Limited_Event_Start_ComeBack_Limited_Home"
+        ]
+    },
+    "Limited_Event_Limited_Event_Start_MoWuQingJiao_ZhuDiXunCha": {
+        "recognition": "OCR",
+        "post_delay": 1000,
+        "timeout": 5000,
+        "expected": [
+            "驻地巡查"
+        ],
+        "action": "Click",
+        "next": [
+            "[JumpBack]Limited_Event_Limited_Event_Start_MoWuQingJiao_PaiQian",
+            "[JumpBack]Limited_Event_Limited_Event_Start_MoWuQingJiao_First_Fight",
+            "Limited_Event_Start_ComeBack_Limited_Home"
+        ]
+    },
+    "Limited_Event_Limited_Event_Start_MoWuQingJiao_PaiQian": {
+        "recognition": "OCR",
+        "expected": [
+            "派遣"
+        ],
+        "roi": [
+            677,
+            532,
+            590,
+            146
+        ],
+        "action": "Click",
+        "max_hit": 4,
+        "next": [
+            "Limited_Event_Limited_Event_Start_MoWuQingJiao_PaiQian",
+            "[JumpBack]Limited_Event_Limited_Event_Start_Skip_Award",
+        ],
+        "timeout": 4000
+    },
+    "Limited_Event_Limited_Event_Start_MoWuQingJiao_First_Fight": {
+        "recognition": "OCR",
+        "expected": [
+            "开始行动"
+        ],
+        "roi": [
+            677,
+            532,
+            590,
+            146
+        ],
+        "action": "Click",
+        "post_delay": 500,
+        "next": [
+            "Limited_Event_Limited_Event_Start_MoWuQingJiao_First_Fight_Click_Fight"
+        ],
+        "timeout": 4000
+    },
+    "Limited_Event_Limited_Event_Start_MoWuQingJiao_First_Fight_Click_Fight": {
+        "recognition": "OCR",
+        "expected": [
+            "开始战斗"
+        ],
+        "action": "Click",
+        "next": [
+            "[JumpBack]Limited_Event_Start_In_Battle",
+            "Limited_Event_Limited_Event_Start_MoWuQingJiao_First_Fight_Complete"
+        ]
+    },
+    "Limited_Event_Limited_Event_Start_MoWuQingJiao_First_Fight_Complete": {
+        "recognition": "OCR",
+        "expected": [
+            "数据"
+        ],
+        "action": "Click",
+        "target_offset": [
+            200,
+            0,
+            0,
+            0
+        ],
+        "post_delay": 3000
+    },
+    "Limited_Event_Limited_Event_Start_Skip_Award": {
+        "recognition": "OCR",
+        "expected": [
+            "获得物资"
+        ],
+        "action": "Click",
+        "target_offset": [
+            300,
+            0,
+            0,
+            0
+        ],
+        "focus": "[动作] 领取成功，点击屏幕跳过奖励界面"
+    },
+    "Limited_Event_Limited_Event_Start_Skip_Award2": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            1067,
+            79,
+            37,
+            30
+        ],
+        "focus": "[动作] 关闭奖励窗口"
+    },
+    "Limited_Event_Start_Click_Home_Button": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "回到主界面.png"
+        ],
+        "action": "Click",
+        "threshold": [
+            0.95
+        ],
+        "post_delay": 1000,
+        "focus": "[动作] 点击回到主界面按钮"
+    },
+    "Limited_Event_Start_Click_Comeback_Button": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "返回按键.png"
+        ],
+        "action": "Click",
+        "threshold": [
+            0.95
+        ],
+        "post_delay": 1000,
+        "focus": "[动作] 点击返回按键"
+    },
+    "Limited_Event_Start_Click_Close_Button": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "关闭图标.png"
+        ],
+        "action": "Click",
+        "threshold": [
+            0.95
+        ],
+        "post_delay": 1000,
+        "focus": "[动作] 点击关闭图标"
+    },
+    "Limited_Event_Start_Click_FanHuiYingDi_Button": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "返回营地.png"
+        ],
+        "action": "Click",
+        "threshold": [
+            0.95
+        ],
+        "post_delay": 1000,
+        "focus": "[动作] 点击返回营地按键"
+    },
+    "Limited_Event_Start_ComeBack_Limited_Home": {
+        "next": [
+            "Limited_Event_Start_Is_Limited_Home",
+            "[JumpBack]Limited_Event_Start_Click_Comeback_Button",
+            "[JumpBack]Limited_Event_Start_Click_Close_Button",
+        ],
+        "focus": "[动作] 尝试回到活动主界面"
+    },
+    "Limited_Event_Start_Is_Limited_Home": {
+        "recognition": "OCR",
+        "expected": [
+            "签到"
+        ],
+        "focus": "已回到活动主界面"
+    },
+    "Limited_Event_Start_ComeBack_Home": {
+        "next": [
+            "[JumpBack]Limited_Event_Start_Click_Home_Button",
+            "[JumpBack]Limited_Event_Start_Click_Comeback_Button",
+            "[JumpBack]Limited_Event_Start_Click_Close_Button",
+            "[JumpBack]Limited_Event_Start_Click_FanHuiYingDi_Button",
+            "Limited_Event_Start_ComeBack_Home_Is_HomePage"
+        ],
+        "focus": "[动作] 尝试回到主界面"
+    },
+    "Limited_Event_Start_In_Battle": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "战斗中 - 设置.png"
+        ],
+        "threshold": [
+            0.9
+        ],
+        "action": "DoNothing",
+        "next": [
+            "Limited_Event_Start_In_Battle_2Times_Speed",
+            "Limited_Event_Start_In_Battle_Auto_Skill"
+        ],
+        "timeout": 2000
+    },
+    "Limited_Event_Start_In_Battle_2Times_Speed": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "战斗中 - 2倍速.png"
+        ],
+        "threshold": [
+            0.9
+        ],
+        "action": "Click",
+        "roi": [
+            194,
+            19,
+            63,
+            58
+        ],
+        "max_hit": 6,
+        "inverse": true
+    },
+    "Limited_Event_Start_In_Battle_Auto_Skill": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "战斗 - 未开启自动总攻.png"
+        ],
+        "threshold": [
+            0.95
+        ],
+        "action": "Click",
+        "roi": [
+            270,
+            17,
+            69,
+            61
+        ],
+        "max_hit": 6,
+    },
+    "Limited_Event_Start_ComeBack_Home_Is_HomePage": {
+        "recognition": "OCR",
+        "expected": [
+            "(?i)UID"
+        ],
+        "next": [],
+        "focus": "[状态] 已成功返回主界面，任务结束"
+    },
+    "Limited_Event_Start_Loading": {
+        "recognition": "OCR",
+        "expected": [
+            "(?i)Load"
+        ],
+        "focus": "[状态] 界面加载中"
+    }
+}

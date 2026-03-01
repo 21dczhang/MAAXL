@@ -87,9 +87,18 @@
             ]
         },
         {
+            "name": "限时活动任务",
+            "entry": "Limited_Event_Start",
+            "default_check": true,
+            "description": "完成限时活动相关任务",
+            "option": [
+                "魔物清缴选择"
+            ]
+        },
+        {
             "name": "测试任务",
             "default_check": false,
-            "entry": "ZhanDou_ZhanDou_Start_ZhanDou_Select_JiNeng_Lv"
+            "entry": "Limited_Event_Limited_Event_Start_ChengJiuJiangLi"
         }
     ],
     "option": {
@@ -123,6 +132,52 @@
                         "ZhanDou_ZhanDou_Start_ZhanDou_Select_CeLue": {
                             "next": [
                                 "ZhanDou_ZhanDou_Start_ZhanDou_Select_JiNeng"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "魔物清缴选择": {
+            "type": "select",
+            "default_case": "物资采集 - 金币",
+            "cases": [
+                {
+                    "name": "物资采集 - 金币",
+                    "pipeline_override": {
+                        "Limited_Event_Limited_Event_Start_MoWuQingJiao_CeLue": {
+                            "next": [
+                                "Limited_Event_Limited_Event_Start_MoWuQingJiao_WuZiCaiJi"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "情报搜集 - 经验",
+                    "pipeline_override": {
+                        "Limited_Event_Limited_Event_Start_MoWuQingJiao_CeLue": {
+                            "next": [
+                                "Limited_Event_Limited_Event_Start_MoWuQingJiao_QingBaoSouJi"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "战斗演习 - 技能书",
+                    "pipeline_override": {
+                        "Limited_Event_Limited_Event_Start_MoWuQingJiao_CeLue": {
+                            "next": [
+                                "Limited_Event_Limited_Event_Start_MoWuQingJiao_ZhanDouYanLian"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "驻地巡查 - 徽章升级材料",
+                    "pipeline_override": {
+                        "Limited_Event_Limited_Event_Start_MoWuQingJiao_CeLue": {
+                            "next": [
+                                "Limited_Event_Limited_Event_Start_MoWuQingJiao_ZhuDiXunCha"
                             ]
                         }
                     }
