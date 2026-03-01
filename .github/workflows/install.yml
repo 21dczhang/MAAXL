@@ -131,7 +131,7 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
-          name: MaaTKFM2-${{ matrix.os }}-${{ matrix.arch }}
+          name: MaaXL-${{ matrix.os }}-${{ matrix.arch }}
           path: "install"
 
   changelog:
