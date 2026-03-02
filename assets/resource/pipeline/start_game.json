@@ -25,10 +25,10 @@
         "action": "Click",
         "post_delay": 1000,
         "next": [
-            "[JumpBack]StartGame_Start_Is_HomePage",
             "StartGame_Start_Click_Start",
             "StartGame_Start_Close_Notice",
-            "StartGame_Start_Skip_HuiGui"
+            "StartGame_Start_Skip_HuiGui",
+            "StartGame_Start_Is_HomePage"
         ],
         "focus": "[动作] 点击开始游戏按钮"
     },
@@ -40,7 +40,6 @@
         "action": "Click",
         "post_delay": 1000,
         "next": [
-            "[JumpBack]StartGame_Start_Is_HomePage",
             "StartGame_Start_Skip_HuiGui",
             "StartGame_Start_Is_HomePage"
         ],
@@ -60,7 +59,6 @@
         ],
         "post_delay": 1000,
         "next": [
-            "[JumpBack]StartGame_Start_Is_HomePage",
             "StartGame_Start_Is_HomePage"
         ],
         "focus": "[动作] 跳过回归活动"
@@ -70,7 +68,58 @@
         "expected": [
             "(?i)UID"
         ],
+        "next": [
+            "[JumpBack]StartGame_Start_Click_Home_Button",
+            "[JumpBack]StartGame_Start_Click_Comeback_Button",
+            "[JumpBack]StartGame_Start_Click_Close_Button",
+            "StartGame_Start_Skip_HuiGui",
+            "StartGame_Start_Is_HomePage2"
+        ],
+        "post_delay": 3000,
+        "focus": "[状态] 已确认位于主界面1,等待3s后再执行"
+    },
+    "StartGame_Start_Is_HomePage2": {
+        "recognition": "OCR",
+        "expected": [
+            "(?i)UID"
+        ],
         "focus": "[状态] 已确认位于主界面"
+    },
+    "StartGame_Start_Click_Home_Button": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "回到主界面.png"
+        ],
+        "threshold": [
+            0.95
+        ],
+        "action": "Click",
+        "post_delay": 1000,
+        "focus": "[动作] 点击回到主界面按钮"
+    },
+    "StartGame_Start_Click_Comeback_Button": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "返回按键.png"
+        ],
+        "threshold": [
+            0.95
+        ],
+        "action": "Click",
+        "post_delay": 1000,
+        "focus": "[动作] 点击返回按键"
+    },
+    "StartGame_Start_Click_Close_Button": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "关闭图标.png"
+        ],
+        "threshold": [
+            0.95
+        ],
+        "action": "Click",
+        "post_delay": 1000,
+        "focus": "[动作] 点击关闭图标"
     },
     "StartGame_Start_Loading": {
         "recognition": "OCR",

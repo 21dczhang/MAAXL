@@ -3,7 +3,7 @@
 # ============================================
 
 $DESKTOP_PATH = "C:\Users\Aurora\Desktop"
-$TEMPLATE_FOLDER = Join-Path $DESKTOP_PATH "MaaXL_Templete"
+$TEMPLATE_FOLDER = Join-Path $DESKTOP_PATH "MaaXL_Template"
 $TARGET_FOLDERS = @("MaaXL")
 
 Write-Host "========================================" -ForegroundColor Cyan
