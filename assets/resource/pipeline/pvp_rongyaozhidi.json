@@ -8,7 +8,7 @@
             "[JumpBack]PVP1_Start_Click_FanHuiYingDi_Button",
             "PVP1_Start_Is_HomePage"
         ],
-        "focus": "[动作] 开始任务：领取免费礼包"
+        "focus": "[动作] 开始 PVP 任务流程"
     },
     "PVP1_Start_Is_HomePage": {
         "recognition": "OCR",
@@ -18,29 +18,29 @@
         "next": [
             "PVP1_PVP1_Start"
         ],
-        "focus": "[状态] 已回到主界面"
+        "focus": "[状态] 识别 UID，确认处于主界面"
     },
     "PVP1_PVP1_Start": {
+        "post_delay": 1000,
         "next": [
             "[JumpBack]PVP1_PVP1_Start_Goto_PVP1",
             "[JumpBack]PVP1_PVP1_Start_Check_And_Faight_Start",
-            //这里添加任务，注意max_hit 要设置为1
             "PVP1_Start_ComeBack_Home"
         ],
-        "post_delay": 1000,
-        "focus": "[路径] 分配任务：前往集市或博物集市"
+        "focus": "[路径] 准备前往竞技场/排名界面"
     },
     "PVP1_PVP1_Start_Goto_PVP1": {
-        "max_hit": 1,
         "recognition": "OCR",
         "expected": [
             "日程表"
         ],
+        "max_hit": 1,
+        "action": "Click",
+        "post_delay": 1500,
         "next": [
             "PVP1_PVP1_Start_Goto_PVP2"
         ],
-        "post_delay": 1500,
-        "action": "Click",
+        "focus": "[动作] 点击【日程表】进入活动列表"
     },
     "PVP1_PVP1_Start_Goto_PVP2": {
         "recognition": "OCR",
@@ -48,7 +48,8 @@
             "排名"
         ],
         "action": "Click",
-        "post_delay": 1500
+        "post_delay": 1500,
+        "focus": "[动作] 点击【排名】进入 PVP 竞技界面"
     },
     "PVP1_PVP1_Start_Check_And_Faight_Start": {
         "max_hit": 1,
@@ -56,7 +57,8 @@
         "next": [
             "[JumpBack]PVP1_PVP1_Start_Check_Has_CiShu",
             "PVP1_PVP1_Start_Check_No_Enought_CiShu"
-        ]
+        ],
+        "focus": "[判断] 检查当前剩余挑战次数"
     },
     "PVP1_PVP1_Start_Check_Has_CiShu": {
         "recognition": "OCR",
@@ -70,10 +72,10 @@
             42
         ],
         "post_delay": 1500,
-        "focus": "剩余次数，继续战斗",
         "next": [
             "PVP1_PVP1_Start_Find_Rank"
-        ]
+        ],
+        "focus": "[状态] 检测到剩余次数，准备寻找对手"
     },
     "PVP1_PVP1_Start_Find_Rank": {
         "recognition": "OCR",
@@ -92,7 +94,8 @@
         "post_delay": 1500,
         "next": [
             "PVP1_PVP1_Start_Find_Rank_Fight"
-        ]
+        ],
+        "focus": "[动作] 识别 Rank 列表并点击目标对手"
     },
     "PVP1_PVP1_Start_Find_Rank_Fight": {
         "recognition": "OCR",
@@ -100,26 +103,27 @@
             "开始战斗"
         ],
         "action": "Click",
+        "timeout": 50000,
         "next": [
             "[JumpBack]PVP1_Start_In_Battle",
             "PVP1_PVP1_Start_Find_Rank_Fight_Complete"
         ],
-        "timeout": 50000
+        "focus": "[动作] 点击【开始战斗】按钮"
     },
     "PVP1_PVP1_Start_Find_Rank_Fight_Complete": {
         "recognition": "OCR",
         "expected": [
             "数据"
         ],
-        "action": "Click",
         "target_offset": [
             200,
             0,
             0,
             0
         ],
+        "action": "Click",
         "post_delay": 3000,
-        "focus": null
+        "focus": "[动作] 战斗结束，点击结算界面（数据偏移位）"
     },
     "PVP1_PVP1_Start_Check_No_Enought_CiShu": {
         "recognition": "OCR",
@@ -132,22 +136,22 @@
             88,
             42
         ],
-        "focus": "没有次数，结束战斗"
+        "focus": "[状态] 挑战次数为 0，准备结束任务"
     },
     "PVP1_PVP1_Start_Skip_Award": {
         "recognition": "OCR",
         "expected": [
             "获得物资"
         ],
-        "action": "Click",
         "target_offset": [
             300,
             0,
             0,
             0
         ],
+        "action": "Click",
         "post_delay": 800,
-        "focus": "[动作] 领取成功，点击屏幕跳过奖励界面"
+        "focus": "[动作] 识别到物资获得，点击空白处跳过奖励"
     },
     "PVP1_Start_In_Battle": {
         "recognition": "TemplateMatch",
@@ -157,10 +161,10 @@
         "threshold": [
             0.9
         ],
-        "action": "DoNothing",
         "timeout": 2000,
+        "action": "DoNothing",
         "next": [],
-        "focus": null
+        "focus": "[状态] 正在战斗中，等待结算"
     },
     "PVP1_Start_Click_Home_Button": {
         "recognition": "TemplateMatch",
@@ -172,7 +176,7 @@
         ],
         "action": "Click",
         "post_delay": 1000,
-        "focus": "[动作] 点击回到主界面按钮"
+        "focus": "[动作] 点击图标回到主界面"
     },
     "PVP1_Start_Click_Comeback_Button": {
         "recognition": "TemplateMatch",
@@ -208,7 +212,7 @@
         ],
         "action": "Click",
         "post_delay": 1000,
-        "focus": "[动作] 点击返回营地按键"
+        "focus": "[动作] 点击【返回营地】按钮"
     },
     "PVP1_Start_ComeBack_Home": {
         "next": [
@@ -218,7 +222,7 @@
             "[JumpBack]PVP1_Start_Click_FanHuiYingDi_Button",
             "PVP1_Start_ComeBack_Home_Is_HomePage"
         ],
-        "focus": "[动作] 尝试回到主界面"
+        "focus": "[动作] 触发返回主界面的系列补救操作"
     },
     "PVP1_Start_ComeBack_Home_Is_HomePage": {
         "recognition": "OCR",
@@ -232,13 +236,13 @@
             28
         ],
         "next": [],
-        "focus": "[状态] 已成功返回主界面，任务结束"
+        "focus": "[状态] 确认回到主界面，PVP 任务全部完成"
     },
     "PVP1_Start_Loading": {
         "recognition": "OCR",
         "expected": [
             "(?i)Load"
         ],
-        "focus": "[状态] 界面加载中"
+        "focus": "[状态] 画面加载中，等待响应"
     }
 }
