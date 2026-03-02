@@ -64,7 +64,7 @@
             105
         ],
         "threshold": [
-            0.99
+            0.9
         ],
         "action": "Click",
         "post_delay": 1500,
@@ -85,6 +85,7 @@
             0,
             0
         ],
+        "post_delay": 800,
         "focus": "[动作] 领取成功，点击屏幕跳过奖励界面"
     },
     "TanXianDui_Start_Click_Home_Button": {
@@ -149,6 +150,12 @@
         "recognition": "OCR",
         "expected": [
             "(?i)UID"
+        ],
+        "roi": [
+            187,
+            3,
+            118,
+            28
         ],
         "next": [],
         "focus": "[状态] 已成功返回主界面，任务结束"

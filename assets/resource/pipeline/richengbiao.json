@@ -72,7 +72,39 @@
             "一键收取"
         ],
         "action": "Click",
+        "next": [
+            "RiChengBiao_RiChengBiao_Start_RiChengBiao_YiJianLingQu_Is_Caiji"
+        ],
+        "timeout": 4000,
+        "post_delay": 2000,
         "focus": null
+    },
+    "RiChengBiao_RiChengBiao_Start_RiChengBiao_YiJianLingQu_Is_Caiji": {
+        "recognition": "OCR",
+        "expected": [
+            "采集"
+        ],
+        "post_delay": 6000,
+        "next": [
+            "RiChengBiao_RiChengBiao_Start_RiChengBiao_YiJianLingQu_GuanBi"
+        ],
+        "threshold": 0.9,
+        "timeout": 10000
+    },
+    "RiChengBiao_RiChengBiao_Start_RiChengBiao_YiJianLingQu_GuanBi": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "关闭图标2.png"
+        ],
+        "threshold": [
+            0.9
+        ],
+        "next": [
+            "RiChengBiao_RiChengBiao_Start_RiChengBiao_YiJianLingQu_GuanBi"
+        ],
+        "timeout": 5000,
+        "post_delay": 1500,
+        "action": "Click"
     },
     "RiChengBiao_RiChengBiao_Start_Skip_Award": {
         "recognition": "OCR",
@@ -86,6 +118,7 @@
             0,
             0
         ],
+        "post_delay": 800,
         "focus": "[动作] 领取成功，点击屏幕跳过奖励界面"
     },
     "RiChengBiao_Start_Click_Home_Button": {
@@ -137,6 +170,12 @@
         "recognition": "OCR",
         "expected": [
             "(?i)UID"
+        ],
+        "roi": [
+            187,
+            3,
+            118,
+            28
         ],
         "next": [],
         "focus": "[状态] 已成功返回主界面，任务结束"

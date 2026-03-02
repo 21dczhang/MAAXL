@@ -83,6 +83,12 @@
         "expected": [
             "(?i)UID"
         ],
+        "roi": [
+            187,
+            3,
+            118,
+            28
+        ],
         "focus": "[状态] 已确认位于主界面"
     },
     "StartGame_Start_Click_Home_Button": {

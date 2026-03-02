@@ -66,12 +66,6 @@
             "description": "升级角色10次，以便完成日常任务"
         },
         {
-            "name": "凭证奖励领取",
-            "entry": "PingZheng_Start",
-            "default_check": true,
-            "description": "领取凭证奖励"
-        },
-        {
             "name": "探险队-团队馈礼",
             "entry": "TanXianDui_Start",
             "default_check": true,
@@ -94,6 +88,18 @@
             "option": [
                 "魔物清缴选择"
             ]
+        },
+        {
+            "name": "日常奖励领取",
+            "entry": "Daily_Task_Start",
+            "default_check": true,
+            "description": "日常奖励领取",
+        },
+        {
+            "name": "凭证奖励领取",
+            "entry": "PingZheng_Start",
+            "default_check": true,
+            "description": "领取凭证奖励"
         },
         {
             "name": "测试任务",
