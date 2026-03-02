@@ -28,6 +28,7 @@
             //这里添加任务，注意max_hit 要设置为1
             "Daily_Task_Start_ComeBack_Home"
         ],
+        "post_delay": 1500,
         "focus": "[路径] 分配任务：前往集市或博物集市"
     },
     "Daily_Task_Daily_Task_Start_Goto_Daily_Task": {
@@ -83,7 +84,7 @@
     "Daily_Task_Daily_Task_Start_Claim_Award": {
         "recognition": "OCR",
         "expected": [
-            "查看活跃奖励"
+            "领取活跃奖励"
         ],
         "roi": [
             213,

@@ -61,6 +61,7 @@
         "action": "Click",
         "max_hit": 1,
         "post_delay": 1500,
+        "timeout": 5000,
         "next": [
             "Limited_Event_Limited_Event_Start_TongXingZheng_Claim_EXP2"
         ],

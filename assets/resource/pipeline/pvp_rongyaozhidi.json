@@ -1,0 +1,244 @@
+{
+    "PVP1_Start": {
+        "next": [
+            "[JumpBack]PVP1_Start_Loading",
+            "[JumpBack]PVP1_Start_Click_Home_Button",
+            "[JumpBack]PVP1_Start_Click_Comeback_Button",
+            "[JumpBack]PVP1_Start_Click_Close_Button",
+            "[JumpBack]PVP1_Start_Click_FanHuiYingDi_Button",
+            "PVP1_Start_Is_HomePage"
+        ],
+        "focus": "[动作] 开始任务：领取免费礼包"
+    },
+    "PVP1_Start_Is_HomePage": {
+        "recognition": "OCR",
+        "expected": [
+            "(?i)UID"
+        ],
+        "next": [
+            "PVP1_PVP1_Start"
+        ],
+        "focus": "[状态] 已回到主界面"
+    },
+    "PVP1_PVP1_Start": {
+        "next": [
+            "[JumpBack]PVP1_PVP1_Start_Goto_PVP1",
+            "[JumpBack]PVP1_PVP1_Start_Check_And_Faight_Start",
+            //这里添加任务，注意max_hit 要设置为1
+            "PVP1_Start_ComeBack_Home"
+        ],
+        "post_delay": 1000,
+        "focus": "[路径] 分配任务：前往集市或博物集市"
+    },
+    "PVP1_PVP1_Start_Goto_PVP1": {
+        "max_hit": 1,
+        "recognition": "OCR",
+        "expected": [
+            "日程表"
+        ],
+        "next": [
+            "PVP1_PVP1_Start_Goto_PVP2"
+        ],
+        "post_delay": 1500,
+        "action": "Click",
+    },
+    "PVP1_PVP1_Start_Goto_PVP2": {
+        "recognition": "OCR",
+        "expected": [
+            "排名"
+        ],
+        "action": "Click",
+        "post_delay": 1500
+    },
+    "PVP1_PVP1_Start_Check_And_Faight_Start": {
+        "max_hit": 1,
+        "post_delay": 1500,
+        "next": [
+            "[JumpBack]PVP1_PVP1_Start_Check_Has_CiShu",
+            "PVP1_PVP1_Start_Check_No_Enought_CiShu"
+        ]
+    },
+    "PVP1_PVP1_Start_Check_Has_CiShu": {
+        "recognition": "OCR",
+        "expected": [
+            "[1-5]"
+        ],
+        "roi": [
+            732,
+            660,
+            88,
+            42
+        ],
+        "post_delay": 1500,
+        "focus": "剩余次数，继续战斗",
+        "next": [
+            "PVP1_PVP1_Start_Find_Rank"
+        ]
+    },
+    "PVP1_PVP1_Start_Find_Rank": {
+        "recognition": "OCR",
+        "expected": [
+            "(?i)rank"
+        ],
+        "order_by": "Vertical",
+        "index": -1,
+        "target_offset": [
+            0,
+            -100,
+            0,
+            0
+        ],
+        "action": "Click",
+        "post_delay": 1500,
+        "next": [
+            "PVP1_PVP1_Start_Find_Rank_Fight"
+        ]
+    },
+    "PVP1_PVP1_Start_Find_Rank_Fight": {
+        "recognition": "OCR",
+        "expected": [
+            "开始战斗"
+        ],
+        "action": "Click",
+        "next": [
+            "[JumpBack]PVP1_Start_In_Battle",
+            "PVP1_PVP1_Start_Find_Rank_Fight_Complete"
+        ],
+        "timeout": 50000
+    },
+    "PVP1_PVP1_Start_Find_Rank_Fight_Complete": {
+        "recognition": "OCR",
+        "expected": [
+            "数据"
+        ],
+        "action": "Click",
+        "target_offset": [
+            200,
+            0,
+            0,
+            0
+        ],
+        "post_delay": 3000,
+        "focus": null
+    },
+    "PVP1_PVP1_Start_Check_No_Enought_CiShu": {
+        "recognition": "OCR",
+        "expected": [
+            "0"
+        ],
+        "roi": [
+            732,
+            660,
+            88,
+            42
+        ],
+        "focus": "没有次数，结束战斗"
+    },
+    "PVP1_PVP1_Start_Skip_Award": {
+        "recognition": "OCR",
+        "expected": [
+            "获得物资"
+        ],
+        "action": "Click",
+        "target_offset": [
+            300,
+            0,
+            0,
+            0
+        ],
+        "post_delay": 800,
+        "focus": "[动作] 领取成功，点击屏幕跳过奖励界面"
+    },
+    "PVP1_Start_In_Battle": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "战斗中 - 设置.png"
+        ],
+        "threshold": [
+            0.9
+        ],
+        "action": "DoNothing",
+        "timeout": 2000,
+        "next": [],
+        "focus": null
+    },
+    "PVP1_Start_Click_Home_Button": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "回到主界面.png"
+        ],
+        "threshold": [
+            0.95
+        ],
+        "action": "Click",
+        "post_delay": 1000,
+        "focus": "[动作] 点击回到主界面按钮"
+    },
+    "PVP1_Start_Click_Comeback_Button": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "返回按键.png"
+        ],
+        "threshold": [
+            0.95
+        ],
+        "action": "Click",
+        "post_delay": 1000,
+        "focus": "[动作] 点击返回按键"
+    },
+    "PVP1_Start_Click_Close_Button": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "关闭图标.png"
+        ],
+        "threshold": [
+            0.95
+        ],
+        "action": "Click",
+        "post_delay": 1000,
+        "focus": "[动作] 点击关闭图标"
+    },
+    "PVP1_Start_Click_FanHuiYingDi_Button": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "返回营地.png"
+        ],
+        "threshold": [
+            0.95
+        ],
+        "action": "Click",
+        "post_delay": 1000,
+        "focus": "[动作] 点击返回营地按键"
+    },
+    "PVP1_Start_ComeBack_Home": {
+        "next": [
+            "[JumpBack]PVP1_Start_Click_Home_Button",
+            "[JumpBack]PVP1_Start_Click_Comeback_Button",
+            "[JumpBack]PVP1_Start_Click_Close_Button",
+            "[JumpBack]PVP1_Start_Click_FanHuiYingDi_Button",
+            "PVP1_Start_ComeBack_Home_Is_HomePage"
+        ],
+        "focus": "[动作] 尝试回到主界面"
+    },
+    "PVP1_Start_ComeBack_Home_Is_HomePage": {
+        "recognition": "OCR",
+        "expected": [
+            "(?i)UID"
+        ],
+        "roi": [
+            187,
+            3,
+            118,
+            28
+        ],
+        "next": [],
+        "focus": "[状态] 已成功返回主界面，任务结束"
+    },
+    "PVP1_Start_Loading": {
+        "recognition": "OCR",
+        "expected": [
+            "(?i)Load"
+        ],
+        "focus": "[状态] 界面加载中"
+    }
+}

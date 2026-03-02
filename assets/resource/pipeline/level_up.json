@@ -118,7 +118,7 @@
             "提升"
         ],
         "action": "Click",
-        "max_hit": 10,
+        "max_hit": 15,
         "timeout": 5000,
         "next": [
             "LevelUP_LevelUP_Start_ChengYuan_Select_Role_TiSheng_Click_TiSheng"

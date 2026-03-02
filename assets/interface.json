@@ -90,6 +90,12 @@
             ]
         },
         {
+            "name": "荣耀之地 - pvp",
+            "entry": "PVP1_Start",
+            "default_check": true,
+            "description": "pvp自动打",
+        },
+        {
             "name": "日常奖励领取",
             "entry": "Daily_Task_Start",
             "default_check": true,
